@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+h1{
+font-family: 'Great Vibes', cursive;
+text-align: center;
+padding: 15px;
+margin: 10px;
+}
+
+.navigation{
+    font-family: 'Great Vibes', cursive;
+    font-size: x-large;
+    color: black;
+    background-color: #e1bee7;
+}

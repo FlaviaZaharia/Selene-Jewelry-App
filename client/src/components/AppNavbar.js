@@ -3,16 +3,10 @@ import{
     Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
   Container,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
 
 class AppNavbar extends Component {
@@ -26,14 +20,27 @@ class AppNavbar extends Component {
     }
     render() {
         return (
-        <div>
-            <Navbar color="dark" dark expand="sm" className="mb-5">
+        <div className="navigation">
+            <Navbar  light expand="sm" className="navbar">
                 <Container>
-                    <NavbarBrand href="/">Jewelry</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            
+                        <Nav className="w-100" navbar>
+                        <NavItem >
+                                <NavLink href="#">Homepage</NavLink>
+                            </NavItem>
+                            <NavItem >
+                                <NavLink href="#">Jewelry</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#">Watches</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#">Gift Boxes</NavLink>
+                            </NavItem>
+                            <NavItem >
+                                <NavLink href="#">About Us</NavLink>
+                            </NavItem>
                         </Nav>
                     </Collapse>
 
