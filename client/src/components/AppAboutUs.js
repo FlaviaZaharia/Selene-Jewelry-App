@@ -1,13 +1,13 @@
 import React from 'react';
-class AppJewerly extends React.Component{
+class AppAboutUs extends React.Component{
 
     render(){
         return(
             <div>
-                <h1>jewelry</h1>
+                <h1>about us</h1>
             </div>
         );
     }
         
 }
-export default AppJewerly;
+export default AppAboutUs;

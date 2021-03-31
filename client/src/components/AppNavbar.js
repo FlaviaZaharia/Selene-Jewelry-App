@@ -5,11 +5,11 @@ import{
   NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
   Container,
 } from 'reactstrap';
-
+import {Link} from 'react-router-dom';
 class AppNavbar extends Component {
+    
     state = {
             isOpen: false 
         }
@@ -25,22 +25,19 @@ class AppNavbar extends Component {
                 <Container>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="w-100" navbar>
-                        <NavItem >
-                                <NavLink href="#">Homepage</NavLink>
-                            </NavItem>
-                            <NavItem >
-                                <NavLink href="#">Jewelry</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="#">Watches</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="#">Gift Boxes</NavLink>
-                            </NavItem>
-                            <NavItem >
-                                <NavLink href="#">About Us</NavLink>
-                            </NavItem>
+                        <Nav  navbar>
+                        <Link to='/'>
+                        <NavItem className="navigation">Home Page</NavItem>
+                        </Link>
+                        <Link to='/jewelry'>
+                        <NavItem className="navigation">Jewelry</NavItem>
+                        </Link>
+                        <Link to='/watches'>
+                        <NavItem className="navigation">Watches</NavItem>
+                        </Link>
+                        <Link to='/watches'>
+                        <NavItem className="navigation">About Us</NavItem>
+                        </Link>
                         </Nav>
                     </Collapse>
 
