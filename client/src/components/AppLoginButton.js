@@ -6,7 +6,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 class AppLoginButton extends Component{
 render(){
 return(
-    <div>
+    <div className="iconite">
     <IconButton className="btn">
         <AccountCircleIcon>
             </AccountCircleIcon></IconButton>
