@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AppLoginButton from'./AppLoginButton';
+import AppLoginButton from'./AppButtons';
 class AppHeader extends Component{
 render(){
     return (

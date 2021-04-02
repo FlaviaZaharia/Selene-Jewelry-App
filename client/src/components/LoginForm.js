@@ -68,10 +68,13 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className="loginForm">
-                
+                <text 
+                className='login'>
                 Log in
+                </text>
                 <InputField 
                     type='text'
+                    id='username'
                     placeholder='Username'
                     value={this.state.username ? this.state.username : ''}
                     onChange = { (val) => this.setInputValue('username',val)}
@@ -79,6 +82,7 @@ class LoginForm extends React.Component {
                 <InputField 
                     type='password'
                     placeholder='Password'
+                    id='password'
                     value={this.state.password ? this.state.password : ''}
                     onChange = { (val) => this.setInputValue('password',val)}
                 />
@@ -88,6 +92,9 @@ class LoginForm extends React.Component {
                     disabled={this.state.buttonDisabled}
                     onClick={ () => this.doLogin() }
                 />
+
+                New customer? Start <a href="#"> here</a> 
+
             </div>
         )
     }
