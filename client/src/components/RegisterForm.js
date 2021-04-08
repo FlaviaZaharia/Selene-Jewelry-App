@@ -16,9 +16,7 @@ class RegisterForm extends React.Component {
     render() {
         return (
             <div className="registerForm">
-                <div className='title'>
-                Registration form:
-                </div>
+                <p> Registration form: </p> 
                 <div className='form-inputs'>
                 <label htmlFor='firstname' className='form-label' >
                     First name: 
