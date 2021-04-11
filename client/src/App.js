@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import AppNavbar from './components/AppNavbar';
 import AppHeader from './components/AppHeader';
 import AppContainer from './components/AppContainer';
+import AppJewelry from './components/AppJewelry';
+import AppWatches from './components/AppWatches';
 import UserStore from './stores/UserStores';
 import LoginForm from './components/LoginForm';
 import InputField from './components/InputField';
@@ -95,11 +97,8 @@ class App extends Component {
       <Route path="/jewelry"  component={AppJewelry}/>
       <Route path="/watches"  component={AppWatches}/>
       <Route path="/aboutus"  component={AppAboutUs}/>
-      <Route path="/login" component={AppLoginButton}/>
-      {/*<LoginForm/> */}
-      <RegisterForm/>
+      <Route path="/login"    component={LoginForm}/>
       </Switch>
-    
     </div>
     </Router>
   );

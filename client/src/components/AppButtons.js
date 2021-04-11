@@ -4,24 +4,25 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import {Link} from 'react-router-dom';
-class AppLoginButton extends Component{
+class AppButtons extends Component{
 render(){
 return(
+    
     <div className="iconite">
-    <IconButton className="btn">
+        <Link to='/login'>
+        <IconButton className="btn">
         <AccountCircleIcon>
-            </AccountCircleIcon></IconButton>
+            </AccountCircleIcon></IconButton></Link>
             <IconButton className="btn">
         <FavoriteIcon></FavoriteIcon>
         </IconButton>
         <IconButton className="btn"> 
             <ShoppingBasketIcon></ShoppingBasketIcon>
             </IconButton>
-
     </div>
 );
 }
 
 }
 
-export default AppLoginButton;
+export default AppButtons;

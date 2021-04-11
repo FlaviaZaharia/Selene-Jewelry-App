@@ -35,7 +35,7 @@ class AppNavbar extends Component {
                         <Link to='/watches'>
                         <NavItem className="navigation">Watches</NavItem>
                         </Link>
-                        <Link to='/watches'>
+                        <Link to='/aboutus'>
                         <NavItem className="navigation">About Us</NavItem>
                         </Link>
                         </Nav>
