@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import AppNavbar from './components/AppNavbar';
 import AppHeader from './components/AppHeader';
 import AppContainer from './components/AppContainer';
-import AppJewelry from './components/AppJewelry';
-import AppWatches from './components/AppWatches';
+// import AppJewelry from './components/AppJewelry';
+//import AppWatches from './components/AppWatches';
 import UserStore from './stores/UserStores';
 import LoginForm from './components/LoginForm';
 import InputField from './components/InputField';
@@ -13,10 +13,12 @@ import AppJewelry from './components/AppJewelry';
 import AppWatches from './components/AppWatches';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import {loadUser} from './actions/authActions';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import AppAboutUs from './components/AppAboutUs';
 import RegisterForm from './components/RegisterForm'
 import AppLoginButton from './components/AppButtons';
+import { storeAnnotation } from 'mobx/dist/internal';
 class App extends Component {
   /*
   //ceva pt LOG IN
@@ -77,6 +79,10 @@ class App extends Component {
     }
   } */
 
+
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() { 
     /*if(UserStore.loading) {
       return (
@@ -99,6 +105,7 @@ class App extends Component {
       <Route path="/aboutus"  component={AppAboutUs}/>
       <Route path="/login"    component={LoginForm}/>
       </Switch>
+      
     </div>
     </Router>
   );
