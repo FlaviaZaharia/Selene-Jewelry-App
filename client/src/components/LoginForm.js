@@ -1,102 +1,93 @@
-import React from 'react';
-import InputField from './InputField';
-import SubmitButton from './SubmitButton';
-import UserStore from '../stores/UserStores';
+//nou
+import {useState,useEffect} from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom'
 
-class LoginForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            password:'',
-            buttonDisabled: false
-        }
-    }
-    setInputValue(property, val) {
-        val=val.trim();
-        if(val.length >12) {
-            return;
-        }
-        this.setState({
-            [property]:val
-        })
-    }
-    resetForm() {
-        this.setState({
-            username:'',
-            password:'',
-            buttonDisabled: false
-        })
-    }
-    async doLogin() {
-        if(!this.state.username) {
-            return;
-        }
-        if(!this.state.password) {
-            return;
-        }
-        this.setState({
-            buttonDisabled:true
-        })
-        try{
-            let res=await fetch('/login',{
-                method: 'post',
-                headers:{
-                    'Accept':'application/json',
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
-                    username: this.state.username,
-                    password: this.state.password
-                })
-            });
-            let result = await res.json();
-            if(result && result.success) {
-                UserStore.isLoggedIn= true;
-                UserStore.username=result.username;
-            }
-            else if(result&&result.success == false) {
-                this.resetForm();
-                alert(result.msg);
-            }
-        }
-        catch(e) {
-            console.log(e);
-            this.resetForm();
-        }
-    }
-    render() {
-        return (
-            <div className="loginForm">
-                <text 
-                className='login'>
-                Log in
-                </text>
-                <InputField 
-                    type='text'
-                    id='username'
-                    placeholder='Username'
-                    value={this.state.username ? this.state.username : ''}
-                    onChange = { (val) => this.setInputValue('username',val)}
+
+const LoginForm = ({ history }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+  
+    useEffect(() => {
+      if (localStorage.getItem("authToken")) {
+        history.push("/front");
+      }
+    }, [history]);
+  
+    const loginHandler = async (e) => {
+      e.preventDefault();
+  
+      const config = {
+        header: {
+          "Content-Type": "application/json",
+        },
+      };
+  
+      try {
+        const { data } = await axios.post(
+          "/api/auth/login",
+          { email, password },
+          config
+        );
+  
+        localStorage.setItem("authToken", data.token);
+  
+        history.push("/front");
+      } catch (error) {
+        setError(error.response.data.error);
+        setTimeout(() => {
+          setError("");
+        }, 5000);
+      }
+    };
+
+ return(
+
+<div className="loginForm">
+                <br></br>
+                <p> Login</p> 
+                <form onSubmit={loginHandler}>
+                    {error&&<span>{error}</span>}
+                
+                <div className='form-input'>
+                <label htmlFor='email' className='form-label'>
+                    Email: 
+                </label>
+                <input
+                    type='text' required
+                    id='email'
+                    className='input'
+                    placeholder='Enter your email'
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+
+                   
                 />
-                <InputField 
-                    type='password'
-                    placeholder='Password'
+                </div>
+
+                <div className='form-inputs'>
+                <label htmlFor='password' className='form-label'>
+                    Password: 
+                </label>
+                <input
+                    type="password" required
                     id='password'
-                    value={this.state.password ? this.state.password : ''}
-                    onChange = { (val) => this.setInputValue('password',val)}
+                    className='input'
+                    placeholder='Enter your password'
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
                 />
-
-                <SubmitButton
-                    text='submit'
-                    disabled={this.state.buttonDisabled}
-                    onClick={ () => this.doLogin() }
-                />
-
-                New customer? Start <a href="#"> here</a> 
-
+                </div>
+                <div className="submitButton">
+                <button  className='btnn' >Login</button>
+                <span>New Member? Register <Link  to="/register"> here</Link></span>
+                </div> 
+                </form>
             </div>
-        )
-    }
+
+
+);
 }
+
 export default LoginForm;

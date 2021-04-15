@@ -12,7 +12,7 @@ router.post('/',(req,res)=>{
    const {name,email,password}=req.body;
     //simple validation
     if(!name||!email||!password){
-      return res.status(400).json({msg:'please eneter all fields'});
+      return res.status(400).json({msg:'please enter all fields'});
     }
 
     //check for existing user

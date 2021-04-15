@@ -1,24 +1,27 @@
-const config=require('config');
 const jwt=require('jsonwebtoken');
-
-function auth(req,res,next){
-
-    const token=req.header('x-auth-token');
-
-    //check for token
-    if(!token){
-        return res.status(401).json({msg:'no token,authorization denied'});
+const config=require('config');
+const User=require('../models/User');
+const ErrorResponse = require('../utils/errorResponse');
+const errorResponse=require('../utils/errorResponse');
+exports.protect=async(req,res,next)=>{
+    let token;
+    if(req.headers.authorization&&req.headers.authorization.startsWith("Bearer")){
+        //Bearer jdncdndvfvvhvf
+        token=req.headers.authorization.split(" ")[1];
     }
-
-
-   try{
-    //verity token
-    const decoded=jwt.verify(token,config.get('jwtSecret'));
-    //add user from payload
-    req.user=decoded;
-    next();
-   }catch(e){
-       res.status(400).json({msg:'Token is not valid'});
-   }
+    if(!token){
+        return next(new ErrorResponse("Not authorized to use this route",401));
+    }
+    try {
+      const decoded=jwt.verify(token,config.get('jwtSecret'));
+      const user=await User.findById(decoded.id);
+      if(!user){
+          return next(new ErrorResponse("No user found with this id",404));
+      }
+      
+      req.user=user;
+      next();
+    }catch(error){
+    return next(new ErrorResponse("Not authorized to access this route",401));
+    }
 }
-module.exports=auth;
