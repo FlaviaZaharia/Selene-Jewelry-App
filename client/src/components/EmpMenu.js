@@ -44,8 +44,11 @@ export default class EmpMenu extends React.Component {
                     </Card>
 
                 </CardDeck>
-               
+                <br></br>
+                <br></br>
+                
             </div>
+            
         );
     } 
 } 

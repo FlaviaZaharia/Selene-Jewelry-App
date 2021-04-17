@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 import axios from 'axios';
-
-
+import ClientMenu from './ClientMenu';
+import EmpMenu from './EmpMenu';
 const AppPrivateRoute=({history})=>{
     const [error, setError] = useState("");
     const [privateData, setPrivateData] = useState("");
@@ -27,20 +27,22 @@ const AppPrivateRoute=({history})=>{
       fetchPrivateDate();
     }, []);
 
-    const handleLogout=()=>{
+   const handleLogout=()=>{
         localStorage.removeItem("authToken");
         history.push("/");
 
     };
-
+  
 
     return error ? (
       <span className="error-message">{error}</span>
     ) : (
       <div>
-      <button onClick={handleLogout}>
-          Logout
-      </button>
+        <ClientMenu/>
+        <br></br>
+        <button className="outM" onClick={handleLogout}  >
+                    Logout
+                </button>
       </div>
     );
   
