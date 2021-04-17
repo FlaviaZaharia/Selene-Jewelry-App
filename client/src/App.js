@@ -12,6 +12,7 @@ import AppAboutUs from './components/AppAboutUs';
 import RegisterForm from './components/RegisterForm'
 import PrivateRoute from './components/routing/PrivateRoute';
 import AppPrivateRoute from './components/AppPrivateRoute';
+import EmpMenu from './components/EmpMenu';
 
 class App extends Component {
 
@@ -25,13 +26,14 @@ class App extends Component {
       <AppNavbar />
       <Switch>
       <PrivateRoute exact path="/front" component={AppPrivateRoute} />
-      <Route path="/" exact component={AppContainer}/>
+      {/*<Route path="/" exact component={AppContainer}/>*/}
       <Route path="/jewelry"  component={AppJewelry}/>
       <Route path="/watches"  component={AppWatches}/>
       <Route path="/aboutus"  component={AppAboutUs}/>
       <Route path="/login"    component={LoginForm}/>
       <Route path="/register" component={RegisterForm}/>
       </Switch>
+      <EmpMenu/>
       
     </div>
     </Router>
