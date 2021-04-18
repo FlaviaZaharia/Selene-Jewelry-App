@@ -15,6 +15,8 @@ import AppPrivateRoute from './components/AppPrivateRoute';
 import EmpMenu from './components/EmpMenu';
 import ClientMenu from './components/ClientMenu';
 
+import AppAddForm from './components/AppAddForm'
+import AppDeleteForm from './components/AppDeleteForm';
 class App extends Component {
 
   render() { 

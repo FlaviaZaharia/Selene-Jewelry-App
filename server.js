@@ -23,13 +23,18 @@ mongoose.connect(db,{
      .catch(err=>console.log(err));
 
 
-//app.use('/api/items',items);
+//app.use('/api/items',require('./routes/api/items'));
 //app.use('/api/users',users);
-//app.use('/api/auth',require('./routes/api/auth'));
+
 
 //NOU
 
 app.use('/api/auth',require('./routes/api/auth'));
+//nou
+app.use('/api/items',require('./routes/api/items'));
+
+
+
 app.use('/api/private',require('./routes/api/private'));
 //error handler(should be last piece of middleware)
 app.use(errorHandler);

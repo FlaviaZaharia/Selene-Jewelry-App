@@ -28,7 +28,7 @@ render(){
       ];
     return(
         <div>
-        <UncontrolledCarousel  items={items}/> 
+        <UncontrolledCarousel  className="AppContainer" items={items}/> 
           
         </div>
     );

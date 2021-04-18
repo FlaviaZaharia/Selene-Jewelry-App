@@ -32,7 +32,6 @@ const LoginForm = ({ history }) => {
         );
   
         localStorage.setItem("authToken", data.token);
-  
         history.push("/front");
       } catch (error) {
         setError(error.response.data.error);
