@@ -12,7 +12,8 @@ import AppAboutUs from './components/AppAboutUs';
 import RegisterForm from './components/RegisterForm'
 import PrivateRoute from './components/routing/PrivateRoute';
 import AppPrivateRoute from './components/AppPrivateRoute';
-
+import AppAddForm from './components/AppAddForm'
+import AppDeleteForm from './components/AppDeleteForm';
 class App extends Component {
 
   render() { 
