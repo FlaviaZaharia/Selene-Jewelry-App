@@ -39,7 +39,11 @@ const router=express.Router();
 //nou
 const {add}=require('../../controller/add');
 const {remove}=require('../../controller/delete');
+const {find}=require('../../controller/find');
+const {update}=require('../../controller/update')
 router.route("/add").post(add);
 router.route("/delete/:id").delete(remove);
+router.route("/find/:id").get(find);
+router.route("/find/:id").put(update);
 
 module.exports=router;
