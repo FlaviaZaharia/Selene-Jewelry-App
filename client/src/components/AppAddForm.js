@@ -91,7 +91,7 @@ const AppAddForm = ({ history }) => {
                     Price: 
                 </label>
                 <input
-                    type="text" required
+                    type="number" required
                     id='price'
                     className='input'
                     placeholder='Enter price'
@@ -105,7 +105,7 @@ const AppAddForm = ({ history }) => {
                     Quantity: 
                 </label>
                 <input
-                    type="text" required
+                    type="number" required
                     id='price'
                     className='input'
                     placeholder='Enter quantity'
@@ -122,5 +122,5 @@ const AppAddForm = ({ history }) => {
 
 );
 }
-
+export const addHandler=async (e) => {};
 export default AppAddForm;

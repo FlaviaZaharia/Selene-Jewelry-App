@@ -37,7 +37,15 @@ exports.add=async(req,res,next)=>{
   const {name,category,material,price,quantity}=req.body;
   const newItem=await Item.create({
     name,category,material,price,quantity})
-
+/*if(!name||!quantity||!price||!material||!category) {
+  return next(new ErrorResponse("!Please type in all details!",400));
+}
+if(!Number.isInteger(price)) {
+  return next(new ErrorResponse("!Please enter a number for the price! ",400));
+}
+if(!Number.isInteger(quantity)) {
+  return next(new ErrorResponse("!Please enter a number for the quantity!",400));
+}*/
 newItem.save().then(item=>res.send(item)).catch(err=>next(err));
 
 }

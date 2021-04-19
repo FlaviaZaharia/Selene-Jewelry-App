@@ -2,7 +2,12 @@ import {useState,useEffect} from 'react';
 import axios from 'axios';
 import ClientMenu from './ClientMenu';
 import EmpMenu from './EmpMenu';
-const AppPrivateRoute=({history})=>{
+import AppAddForm from './AppAddForm';
+import AppDeleteForm from './AppDeleteForm';
+import PrivateRoute from './routing/PrivateRoute';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import AppContainer from './AppContainer';
+export const AppPrivateRoute=({history})=>{
     const [error, setError] = useState("");
     const [privateData, setPrivateData] = useState("");
   
@@ -27,25 +32,30 @@ const AppPrivateRoute=({history})=>{
       fetchPrivateDate();
     }, []);
 
-   const handleLogout=()=>{
+    handleLogout=function() {
         localStorage.removeItem("authToken");
         history.push("/");
-
+        
     };
   
-
     return error ? (
       <span className="error-message">{error}</span>
     ) : (
-      <div>
-        <ClientMenu/>
-        <br></br>
-        <button className="outM" onClick={handleLogout}  >
-                    Logout
-                </button>
-      </div>
+      <Router>
+    <div className="Emp">
+      <Switch>
+      <PrivateRoute exact path="/front" component={EmpMenu} />
+      <Route path="/add"  component={AppAddForm}/>
+      <Route path="/delete"  component={AppDeleteForm}/>
+      <Route path="/" component={EmpMenu} />
+      </Switch>
+      
+    </div>
+    
+    </Router>
+    
     );
   
 }
-
+export function handleLogout(){};
 export default AppPrivateRoute;
