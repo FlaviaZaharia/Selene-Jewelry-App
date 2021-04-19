@@ -14,6 +14,8 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import AppPrivateRoute from './components/AppPrivateRoute';
 import AppAddForm from './components/AppAddForm'
 import AppDeleteForm from './components/AppDeleteForm';
+import AppFindForm from './components/AppFindForm';
+
 class App extends Component {
 
   render() { 
