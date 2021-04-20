@@ -46,7 +46,9 @@ export default class EmpMenu extends React.Component {
                     <Card className="cards" style={{ width: '18rem' }}>
                         <CardBody>
                             <CardTitle tag="h5" style={{ textAlign: 'center' }}> Stock management</CardTitle>
+                            <Link to="/stock">
                             <Button variant='primary' className="mbut"> Go </Button>
+                            </Link>
                         </CardBody>
                     </Card>
 

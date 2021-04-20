@@ -7,6 +7,8 @@ import AppDeleteForm from './AppDeleteForm';
 import PrivateRoute from './routing/PrivateRoute';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import AppContainer from './AppContainer';
+import AppFindForm from './AppFindForm';
+import EmpStock from './EmpStock';
 export const AppPrivateRoute=({history})=>{
     const [error, setError] = useState("");
     const [privateData, setPrivateData] = useState("");
@@ -46,7 +48,9 @@ export const AppPrivateRoute=({history})=>{
       <Switch>
       <PrivateRoute exact path="/front" component={EmpMenu} />
       <Route path="/add"  component={AppAddForm}/>
+      <Route path="/edit" component={AppFindForm}/>
       <Route path="/delete"  component={AppDeleteForm}/>
+      <Route path="/stock" component={EmpStock}/>
       <Route path="/" component={EmpMenu} />
       </Switch>
       
