@@ -30,7 +30,7 @@ class AppNavbar extends Component {
                         <NavItem className="navigation">Home Page</NavItem>
                         </Link>
                         <Link to='/jewelry'>
-                        <NavItem className="navigation">Jewelry</NavItem>
+                        <NavItem className="navigation" >Jewelry</NavItem>
                         </Link>
                         <Link to='/watches'>
                         <NavItem className="navigation">Watches</NavItem>
@@ -46,5 +46,7 @@ class AppNavbar extends Component {
         </div> );
     }
 }
+
+
 
 export default AppNavbar;
