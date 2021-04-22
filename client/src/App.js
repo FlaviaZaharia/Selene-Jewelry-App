@@ -15,7 +15,7 @@ import AppPrivateRoute from './components/AppPrivateRoute';
 import AppAddForm from './components/AppAddForm'
 import AppDeleteForm from './components/AppDeleteForm';
 import AppFindForm from './components/AppFindForm';
-
+import ImageUpload from './components/ImageUpload'
 
 class App extends Component {
 
@@ -31,8 +31,8 @@ class App extends Component {
       <PrivateRoute exact path="/front" component={AppPrivateRoute} />
       <Route path="/" exact component={AppContainer}/>
       <Route path="/jewelry"  component={AppJewelry}/>
-      <Route path="/watches"  component={AppWatches}/>
-      <Route path="/aboutus"  component={AppAboutUs}/>
+      <Route path="/watches"  component={ImageUpload}/>
+      <Route path="/aboutus"  component={AppAddForm}/>
       <Route path="/login"    component={LoginForm}/>
       <Route path="/register" component={RegisterForm}/>
       </Switch>

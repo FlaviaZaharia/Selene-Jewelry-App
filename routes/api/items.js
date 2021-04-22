@@ -33,11 +33,15 @@ router.delete('/:id',(req,res)=>{
 
 module.exports=router;*/
 
-//nou
+
 const express=require('express');
 const router=express.Router();
+
 //nou
-const {add}=require('../../controller/add');
+const cloudinary=require("../../utils/cloudinary");
+
+
+const {add,upload}=require('../../controller/add');
 const {remove}=require('../../controller/delete');
 const {find}=require('../../controller/find');
 const {update}=require('../../controller/update');
@@ -47,5 +51,6 @@ router.route("/delete/:id").delete(remove);
 router.route("/find/:id").get(find);
 router.route("/find/:id").put(update);
 router.route("/retrieve").get(retrieve);
+router.route("/upload").post(upload);
 
 module.exports=router;

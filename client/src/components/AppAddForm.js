@@ -10,10 +10,12 @@ const AppAddForm = ({ history }) => {
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
     const [error, setError] = useState("");
-  
+
+    const [fileInputState,setFileInputState]=useState("");
+
     const addHandler = async (e) => {
       e.preventDefault();
-  
+     
       const config = {
         header: {
           "Content-Type": "application/json",
@@ -23,7 +25,7 @@ const AppAddForm = ({ history }) => {
       try {
         const { data } = await axios.post(
           "/api/items/add",
-          {name,category,material,price,quantity},
+          {name,category,material,price,quantity,fileInputState},
           config
         );
   
@@ -35,6 +37,9 @@ const AppAddForm = ({ history }) => {
         }, 5000);
       }
     };
+
+
+  
 
  return(
 
@@ -106,7 +111,7 @@ const AppAddForm = ({ history }) => {
                 </label>
                 <input
                     type="text" required
-                    id='price'
+                    id='quantity'
                     className='input'
                     placeholder='Enter quantity'
                     value={quantity}
@@ -117,6 +122,12 @@ const AppAddForm = ({ history }) => {
                 <button  className='btnn' >Save new product</button>
                 </div> 
                 </form>
+                <br/>
+                <div>
+                  Image preview:
+                </div>
+              
+                
             </div>
 
 

@@ -34,7 +34,6 @@ app.use('/api/auth',require('./routes/api/auth'));
 app.use('/api/items',require('./routes/api/items'));
 
 
-
 app.use('/api/private',require('./routes/api/private'));
 //error handler(should be last piece of middleware)
 app.use(errorHandler);

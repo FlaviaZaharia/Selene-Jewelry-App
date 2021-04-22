@@ -32,7 +32,7 @@ newItem.save().then(item=>res.send(item)).catch(err=>{
 });
 
 }*/
-
+//add items
 exports.add=async(req,res,next)=>{
   const {name,category,material,price,quantity}=req.body;
   const newItem=await Item.create({
@@ -40,5 +40,20 @@ exports.add=async(req,res,next)=>{
 
 newItem.save().then(item=>res.send(item)).catch(err=>next(err));
 
+}
+
+//upload photo
+const cloudinary=require("../utils/cloudinary")
+exports.upload= async (req, res) => {
+  try {
+      const fileStr = req.body.data;
+      const uploadResponse = await cloudinary.uploader.upload(fileStr);
+      //const imageUrl=uploadResponse.secure_url;
+      console.log(uploadResponse.secure_url);
+      res.json({ msg: 'yaya' });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ err: 'Something went wrong' });
+  }
 }
 
