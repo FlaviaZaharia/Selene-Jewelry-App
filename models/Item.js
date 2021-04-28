@@ -46,10 +46,10 @@ const ItemSchema=new Schema({
         type:Number,
         required:true
     },
-    /*imageUrl:{
+    image:{
         type:String,
         required:true
-    }*/
+    }
     });
 
 module.exports=Item=mongoose.model('item',ItemSchema);

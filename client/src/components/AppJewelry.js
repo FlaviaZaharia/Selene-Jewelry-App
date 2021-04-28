@@ -5,9 +5,7 @@ import {Card, CardText, CardBody, CardLink,CardTitle, CardImg,Nav, NavItem, NavL
 const  AppJewerly=()=>{
     
     const [items,setItems]=useState([]);
-    const [error, setError] = useState("");
-    
-    
+  
     const getItems = () => {
       axios.get('/api/items/retrieve/').then(rezultat => setItems(rezultat.data));
     }
@@ -39,14 +37,14 @@ const  AppJewerly=()=>{
     </NavItem>
     
   </Nav>
-  {items.map(({id,name,material,price})=>
-              <Card  key={id} className="cards">
+  {items.map(({_id,name,material,price,image})=>
+              <Card  key={_id} className="cards">
               <CardBody>
                 <CardTitle tag="h5" style={{textAlign:'center'}}>{name}</CardTitle>
               </CardBody>
-             
+              <CardImg  width='100%' height='50%' src={image} alt="Card image cap" />
               <CardBody>
-                <CardText style={{textAlign:'center'}}>Article ID:{id} <br/> Material:{material} <br/>Price:{price}</CardText>
+                <CardText style={{textAlign:'center'}}>Article ID:{_id} <br/> Material:{material} <br/>Price:{price}</CardText>
                 <CardLink className='Links' href="#">Add to Wish List</CardLink>
                 <CardLink  className='Links' href="#">Add to Cart</CardLink>
               </CardBody>
@@ -60,5 +58,4 @@ const  AppJewerly=()=>{
         
 }
 export default AppJewerly;
-/*<CardImg  width='100%'  src={image} alt="Card image cap" /> */
 

@@ -160,8 +160,43 @@ vertical-align: middle;
       width:20%;
       height:50%;
       display:inline-block;
+      border-style: groove;
+      border-color: #9a66a3;
       
-      
+  }
+
+  .deck{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height:100%;
+  }
+ .cardss {
+   margin-left: 40%;
+   font-family: 'Cardo', serif;
+   font-size: x-large;
+ 
+  
+   border-style: groove;
+   border-color: #9a66a3;
+ }
+  .outM{
+    background-color:#c48ece;
+  color:#000000;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin-left: 45%;
+  cursor: pointer;
+  font-family: 'Cardo', serif, bold;
+  font-size:medium;
+  }
+  .mbut {
+    margin-left: 42%;
+    background-color: #9a66a3;
+    color:black;
   }
 
   .Links{

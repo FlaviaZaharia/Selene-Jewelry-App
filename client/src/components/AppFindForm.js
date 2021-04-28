@@ -11,8 +11,28 @@ const AppFindForm = ({ history }) => {
     const [material, setMaterial] = useState("");
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
-    
+    const [image,setImage]=useState("");
+    const [loading,setLoading]=useState(false);
+    const uploadImage=async e=>{
+      const files=e.target.files;
+      const data=new FormData();
+      data.append("file",files[0]);
+      data.append("upload_preset","q57kq7w1");
+      setLoading(true);
+      const response=await fetch(
+          " https://api.cloudinary.com/v1_1/djfe4eels/image/upload",
+          {
+              method:"POST",
+              body:data
+          }
+      )
+      const file=await response.json();
+      console.log(file);
+      setImage("https://res.cloudinary.com/djfe4eels/image/upload/"+file.public_id);
+      setLoading(false);
+  }
 
+   
     const findHandler = async (e) => {
       e.preventDefault();
   
@@ -33,6 +53,7 @@ const AppFindForm = ({ history }) => {
         setMaterial(data.material);
         setPrice(data.price);
         setQuantity(data.quantity);
+        setImage(data.image);
         //history.push(`/update/${id}`);
       } catch (error) {
         setError(error.response.data.error);
@@ -44,7 +65,8 @@ const AppFindForm = ({ history }) => {
 
     const updateHandler=async(e)=>{
         e.preventDefault();
-  
+
+
         const config = {
           header: {
             "Content-Type": "application/json",
@@ -54,7 +76,7 @@ const AppFindForm = ({ history }) => {
         try {
           const { data } = await axios.put(
             `/api/items/find/${id}`,
-            {name,category,material,price,quantity},
+            {name,category,material,price,quantity,image},
             config
           );
          
@@ -67,6 +89,8 @@ const AppFindForm = ({ history }) => {
         }
     };
     
+    const Categories=[{val:"Rings",id:'1'},{val:"Earrings",id:'2'},{val:"Necklaces",id:'3'},{val:"Watches",id:'4'},{val:"Bracelets",id:'5'}];
+    const Materials=[{val:"Silver",id:'1'},{val:"Gold",id:'2'},{val:"Stainless steel",id:'3'}];
  return(
 
            <div className="loginForm">
@@ -119,27 +143,30 @@ const AppFindForm = ({ history }) => {
                 <label htmlFor='category' className='form-label'>
                     Category: 
                 </label>
-                <input
-                    type="text" required
-                    id='category'
-                    className='input'
-                    placeholder='Enter category'
-                    value={category}
-                    onChange={(e)=>setCategory(e.target.value)}
-                />
+                <br/>
+                <select className='input'>
+                  <option selected required>{category}</option>
+                  {Categories.filter(({val})=>
+                    val!==category
+                  ).map(({val})=>
+                  <option key={val} onClick={(e)=>setCategory(e.target.value)}>{val}</option>
+                  )}
+                </select>
                 </div>
+
                 <div className='form-inputs'>
                 <label htmlFor='material' className='form-label'>
                     Material: 
                 </label>
-                <input
-                    type="text" required
-                    id='material'
-                    className='input'
-                    placeholder='Enter material'
-                    value={material}
-                    onChange={(e)=>setMaterial(e.target.value)}
-                />
+                <br/>
+                <select className='input'>
+                  <option selected required>{material}</option>
+                  {Materials.filter(({val})=>
+                    val!==material
+                  ).map(({val})=>
+                  <option  key={val} onClick={(e)=>setMaterial(e.target.value)}>{val}</option>
+                  )}
+                </select>
                 </div>
                 <div className='form-inputs'>
                 <label htmlFor='price' className='form-label'>
@@ -168,6 +195,22 @@ const AppFindForm = ({ history }) => {
                     onChange={(e)=>setQuantity(e.target.value)}
                 />
                 </div>
+                <div className='form-inputs'>
+                <label htmlFor='image' className='form-label'>
+                    Image: 
+                </label>
+                <input
+                  type="file" 
+                  name="file"
+                  className='input'
+                  placeholder="Upload an image"
+                  onChange={uploadImage}
+                  />
+                </div>
+                <div className='form-inputs'>
+                <img src={image} width='300px' height='300px'/>
+                </div>
+                <br/>
                 <div className="submitButton">
                 <button  className='btnn' >Update product</button>
                 </div> 
