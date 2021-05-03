@@ -144,12 +144,12 @@ const AppFindForm = ({ history }) => {
                     Category: 
                 </label>
                 <br/>
-                <select className='input'>
+                <select onChange={(e)=>setCategory(e.target.value)} defaultValue={category} className='input'>
                   <option selected required>{category}</option>
                   {Categories.filter(({val})=>
                     val!==category
                   ).map(({val})=>
-                  <option key={val} onClick={(e)=>setCategory(e.target.value)}>{val}</option>
+                  <option key={val}>{val}</option>
                   )}
                 </select>
                 </div>
@@ -159,12 +159,12 @@ const AppFindForm = ({ history }) => {
                     Material: 
                 </label>
                 <br/>
-                <select className='input'>
+                <select onChange={(e)=>setMaterial(e.target.value)} defaultValue={material} className='input'>
                   <option selected required>{material}</option>
                   {Materials.filter(({val})=>
                     val!==material
                   ).map(({val})=>
-                  <option  key={val} onClick={(e)=>setMaterial(e.target.value)}>{val}</option>
+                  <option  key={val} >{val}</option>
                   )}
                 </select>
                 </div>

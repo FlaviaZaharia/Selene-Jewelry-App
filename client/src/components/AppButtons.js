@@ -16,9 +16,10 @@ return(
             <IconButton className="btn">
         <FavoriteIcon></FavoriteIcon>
         </IconButton>
+        <Link to='/cart'>
         <IconButton className="btn"> 
             <ShoppingBasketIcon></ShoppingBasketIcon>
-            </IconButton>
+            </IconButton></Link>
     </div>
 );
 }

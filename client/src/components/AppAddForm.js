@@ -87,10 +87,10 @@ const AppAddForm = ({ history }) => {
                     Category: 
                 </label>
                 <br/>
-                <select className='input' required>
+                <select onChange={(e)=>setCategory(e.target.value)} defaultValue={""} className='input' required>
                   <option selected></option>
                   {Categories.map(({val})=>
-                  <option key={val} onClick={(e)=>setCategory(e.target.value)}>{val}</option>
+                  <option key={val} >{val}</option>
                   )}
                 </select>
                 
@@ -101,10 +101,10 @@ const AppAddForm = ({ history }) => {
                     Material: 
                 </label>
                 <br/>
-                <select className='input' required>
+                <select onChange={(e)=>setMaterial(e.target.value)} defaultValue={""} className='input' required>
                   <option selected></option>
                   {Materials.map(({val})=>
-                  <option  key={val} onClick={(e)=>setMaterial(e.target.value)}>{val}</option>
+                  <option  key={val}>{val}</option>
                   )}
                 </select>
                 

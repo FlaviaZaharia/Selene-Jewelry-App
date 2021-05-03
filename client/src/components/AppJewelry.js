@@ -1,10 +1,24 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Card, CardText, CardBody, CardLink,CardTitle, CardImg,Nav, NavItem, NavLink} from 'reactstrap';
-
+import {useSelector,useDispatch} from 'react-redux'
+import { getProducts as listProducts } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
+import {Link} from 'react-router-dom'
+import {ITEM} from "./ITEM"
 const  AppJewerly=()=>{
-    
-    const [items,setItems]=useState([]);
+  
+  const dispatch = useDispatch();
+
+  const getProducts = useSelector((state) => state.getProducts);
+  const { products, loading, error } = getProducts;
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
+
+  
+   /* const [items,setItems]=useState([]);
   
     const getItems = () => {
       axios.get('/api/items/retrieve/').then(rezultat => setItems(rezultat.data));
@@ -13,7 +27,7 @@ const  AppJewerly=()=>{
     //console.log(filterBraclets);
     useEffect(() => {
       getItems();
-    },[]);
+    },[]);*/
 
     
         return(
@@ -37,18 +51,14 @@ const  AppJewerly=()=>{
     </NavItem>
     
   </Nav>
-  {items.map(({_id,name,material,price,image})=>
-              <Card  key={_id} className="cards">
-              <CardBody>
-                <CardTitle tag="h5" style={{textAlign:'center'}}>{name}</CardTitle>
-              </CardBody>
-              <CardImg  width='100%' height='50%' src={image} alt="Card image cap" />
-              <CardBody>
-                <CardText style={{textAlign:'center'}}>Article ID:{_id} <br/> Material:{material} <br/>Price:{price}</CardText>
-                <CardLink className='Links' href="#">Add to Wish List</CardLink>
-                <CardLink  className='Links' href="#">Add to Cart</CardLink>
-              </CardBody>
-            </Card>
+  {products.map((product)=>
+              <ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              _id={product._id}/>
               )}
   
 

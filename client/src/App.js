@@ -18,6 +18,8 @@ import ClientMenu from './components/ClientMenu';
 import AppAddForm from './components/AppAddForm'
 import AppDeleteForm from './components/AppDeleteForm';
 import AppFindForm from './components/AppFindForm';
+import AppCart from './components/AppCart';
+import AppProductDetails from './components/AppProductDetails';
 
 
 class App extends Component {
@@ -37,7 +39,9 @@ class App extends Component {
       <Route path="/watches"  component={AppWatches}/>
       <Route path="/aboutus"  component={AppAddForm}/>
       <Route path="/login"    component={LoginForm}/>
+      <Route path="/cart"     component={AppCart}/>
       <Route path="/register" component={RegisterForm}/>
+      <Route exact path="/details/:id" component={AppProductDetails}/>
       </Switch>
 
       
