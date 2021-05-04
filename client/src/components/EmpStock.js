@@ -4,8 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {Card, CardText, CardBody, Button, CardLink,CardTitle} from 'reactstrap';
 const EmpStock=({history})=> {
-    const divStyle = {
-      color: 'black'};
+    
     const [items,setItems]=useState([]);
     const [error, setError] = useState("");
     const [_id, setId] = useState("");
@@ -23,6 +22,9 @@ const EmpStock=({history})=> {
     const updateHandler=async(e) =>{
         e.preventDefault();
 
+        /*this.setState ({
+            showMe:false
+        }); */
        
         const config = {
           header: {
@@ -31,7 +33,6 @@ const EmpStock=({history})=> {
         };
     
         try {
-         
 
           const { data } = await axios.put(
             `/api/items/find/${_id}`,
@@ -51,7 +52,7 @@ const EmpStock=({history})=> {
 return(
         <div className='EmpStock' >
             {filter.map(({_id,name,category,quantity})=>
-              <Card  key={_id} className="cards">
+              <Card  key={_id} className="cards" >
               <CardBody>
                 <CardTitle tag="h5" style={{textAlign:'center'}}>{name}</CardTitle>
               </CardBody>
@@ -60,16 +61,18 @@ return(
                 <CardText style={{textAlign:'center'}}>Article ID:{_id} <br/> Category:{category} <br/> Quantity:{quantity}</CardText>
                 {/*<CardLink className='Links' href="#">Add to Wish List</CardLink>
                 <CardLink  className='Links' href="#">Add to Cart</CardLink>*/}
+                 <div className='form-inputs'>
                 <label> Required quantity: </label>
                 <input 
                     type="number" required
                     id='quantity'
                     className='inputStock'
                     placeholder='enter q'
-                     />
-                <Link to="/">
-                <Button className="mbut" onClick={updateHandler}> Refill </Button>
-                </Link>
+                    onChange={(e)=>setQuantity(e.target.value)}
+                     /></div>
+                <div className="submitButton">
+                  <Button className="mbut" onClick={updateHandler}> Refill </Button>
+                </div>
               </CardBody>
             </Card>
               )}
