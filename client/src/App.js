@@ -33,7 +33,7 @@ class App extends Component {
        <AppHeader/>
       <AppNavbar />
       <Switch>
-      <PrivateRoute exact path="/front" component={AppPrivateRoute} />
+      <PrivateRoute exact path="/front" component={EmpMenu} />
       <Route path="/" exact component={AppContainer}/>
       <Route path="/jewelry"  component={AppJewelry}/>
       <Route path="/watches"  component={AppWatches}/>
@@ -42,6 +42,9 @@ class App extends Component {
       <Route path="/cart"     component={AppCart}/>
       <Route path="/register" component={RegisterForm}/>
       <Route exact path="/details/:id" component={AppProductDetails}/>
+      <Route path="/add"  component={AppAddForm}/>
+      <Route path="/edit" component={AppFindForm}/>
+      <Route path="/delete"  component={AppDeleteForm}/>
       </Switch>
 
       
@@ -52,3 +55,4 @@ class App extends Component {
 }
 }
 export default App;
+//<PrivateRoute exact path="/front" component={AppPrivateRoute} />

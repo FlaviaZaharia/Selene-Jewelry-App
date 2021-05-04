@@ -30,12 +30,13 @@ const AppProductDetails=({match,history})=>{
         <>
           <div className="productscreen__left">
             <div className="left__image">
-              <img  width='500px' height='300px' src={product.image} alt={product.name} />
+              <img  width='400px' height='300px' src={product.image} alt={product.name} />
             </div>
             <div className="left__info">
               <p className="left__name">{product.name}</p>
-              <p>Price: ${product.price}</p>
-              <p>Material: {product.material}</p>
+              <p><b>Price: {product.price}$</b></p>
+              <p><b>Category: {product.category}</b></p>
+              <p><b>Material: {product.material}</b></p>
             </div>
           </div>
           <div className="productscreen__right">

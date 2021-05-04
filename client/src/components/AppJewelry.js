@@ -58,6 +58,8 @@ const  AppJewerly=()=>{
               material={product.material}
               price={product.price}
               image={product.image}
+              quantity={product.quantity}
+              category={product.category}
               _id={product._id}/>
               )}
   

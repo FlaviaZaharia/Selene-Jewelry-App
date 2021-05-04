@@ -9,12 +9,25 @@ import AppContainer from './AppContainer';
 import AppFindForm from './AppFindForm';
 import EmpMenu from './EmpMenu';
 
+
+//nou
+import {logout} from '../actions/authActions'
+import { useDispatch, useSelector } from 'react-redux';
 export const AppPrivateRoute=({history})=>{
-    const [error, setError] = useState("");
+    //const [error, setError] = useState("");
     const [privateData, setPrivateData] = useState("");
   
-    useEffect(() => {
-      const fetchPrivateDate = async () => {
+    const dispatch = useDispatch();
+
+    //Grab pieces of data from our store that we care about
+  
+    const state = useSelector(state => {
+      return state.userLogin;
+    });
+    const { loading, userInfo, error } = state;
+
+   // useEffect(() => {
+      /*const fetchPrivateDate = async () => {
         const config = {
           headers: {
             "Content-Type": "application/json",
@@ -31,14 +44,13 @@ export const AppPrivateRoute=({history})=>{
         }
       };
   
-      fetchPrivateDate();
-    }, []);
+      fetchPrivateDate();*/
+      useEffect(() => {
+        if (userInfo) history.push('/front');
+      }, [state]);
+    //}, []);
 
-    handleLogout=function() {
-        localStorage.removeItem("authToken");
-        history.push("/");
-        
-    };
+    
   
     return error ? (
       <span className="error-message">{error}</span>
@@ -60,7 +72,8 @@ export const AppPrivateRoute=({history})=>{
     );
   
 }
-export function handleLogout(){};
+//export function handleLogout(){};
+
 export default AppPrivateRoute;
 
 //<Route path="/stock" component={EmpStock}/>
