@@ -59,7 +59,7 @@ const AppCart=()=>{
             
           </div>
           <div className="submitButton">
-              <button >Proceed To Checkout</button>
+             <Link to='/checkout'> <button>Proceed To Checkout</button></Link>
             </div>
         </div>
       </>

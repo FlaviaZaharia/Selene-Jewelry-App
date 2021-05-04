@@ -20,6 +20,7 @@ import AppDeleteForm from './components/AppDeleteForm';
 import AppFindForm from './components/AppFindForm';
 import AppCart from './components/AppCart';
 import AppProductDetails from './components/AppProductDetails';
+import AppOrder from './components/AppOrder';
 
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
       <Route path="/add"  component={AppAddForm}/>
       <Route path="/edit" component={AppFindForm}/>
       <Route path="/delete"  component={AppDeleteForm}/>
+      <Route path="/checkout"  component={AppOrder}/>
       </Switch>
 
       
