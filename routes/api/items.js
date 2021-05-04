@@ -33,10 +33,11 @@ router.delete('/:id',(req,res)=>{
 
 module.exports=router;*/
 
-//nou
+
 const express=require('express');
 const router=express.Router();
-//nou
+
+
 const {add}=require('../../controller/add');
 const {remove}=require('../../controller/delete');
 const {find}=require('../../controller/find');

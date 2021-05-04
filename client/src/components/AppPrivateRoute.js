@@ -1,14 +1,14 @@
 import {useState,useEffect} from 'react';
 import axios from 'axios';
 import ClientMenu from './ClientMenu';
-import EmpMenu from './EmpMenu';
 import AppAddForm from './AppAddForm';
 import AppDeleteForm from './AppDeleteForm';
 import PrivateRoute from './routing/PrivateRoute';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import AppContainer from './AppContainer';
 import AppFindForm from './AppFindForm';
-import EmpStock from './EmpStock';
+import EmpMenu from './EmpMenu';
+
 export const AppPrivateRoute=({history})=>{
     const [error, setError] = useState("");
     const [privateData, setPrivateData] = useState("");
@@ -50,7 +50,6 @@ export const AppPrivateRoute=({history})=>{
       <Route path="/add"  component={AppAddForm}/>
       <Route path="/edit" component={AppFindForm}/>
       <Route path="/delete"  component={AppDeleteForm}/>
-      <Route path="/stock" component={EmpStock}/>
       <Route path="/" component={EmpMenu} />
       </Switch>
       
@@ -63,3 +62,5 @@ export const AppPrivateRoute=({history})=>{
 }
 export function handleLogout(){};
 export default AppPrivateRoute;
+
+//<Route path="/stock" component={EmpStock}/>
