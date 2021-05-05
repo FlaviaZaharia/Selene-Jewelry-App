@@ -1,58 +1,48 @@
 import {
-    USER_LOADED,
-    USER_LOADING,
-    AUTH_ERROR,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT_SUCCESS,
-    REGISTER_SUCCESS,
-    REGISTER_FAIL 
-} from "../actions/types";
-
-const initialState = {
-    token: localStorage.getItem('token'),
-    isAuthenticated: null,
-    isLoading: false,
-    user:null
-};
-
-export default function(state=initialState, action) {
-    switch(action.type) {
-        case USER_LOADING:
-            return {
-                ...state,
-                isLoading:true
-            };
-        case USER_LOADED:
-            return{
-                ...state,
-                isAuthenticated:true,
-                isLoading: false,
-                user: action.payload
-            };
-        case LOGIN_SUCCESS:
-        case REGISTER_SUCCESS:
-            localStorage.setItem('token',action.payload.token);
-            return{
-                ...state,
-                ...action.payload,
-                isAuthenticated:true,
-                isLoading: false  
-            };
-        case AUTH_ERROR:
-        case LOGIN_FAIL:
-        case LOGOUT_SUCCESS:
-        case REGISTER_FAIL:
-            localStorage.removeItem('token');
-                return {
-                    ...state,
-                    token:null,
-                    user:null,
-                    isAuthenticated: false,
-                    isLoading: false
-                };
-        default:
-            return state;
-
+    USER_LOGIN_REQUEST,
+    USER_LOGIN_SUCCESS,
+    USER_REGISTER_FAIL,
+    USER_REGISTER_REQUEST,
+    USER_REGISTER_SUCCESS,
+    USER_LOGIN_FAIL,
+    USER_LOGOUT_SUCCESS,
+  } from '../redux/authConstants';
+  
+  const userReducer = (state = {}, action) => {
+    switch (action.type) {
+      case USER_REGISTER_REQUEST:
+        return {
+          loading: true,
+        };
+      case USER_REGISTER_SUCCESS:
+        return {
+          userInfo: action.payload,
+        };
+  
+      case USER_REGISTER_FAIL:
+        return {
+          error: action.payload,
+          loading: false,
+        };
+      //Login
+      case USER_LOGIN_REQUEST:
+        return {
+          loading: true,
+        };
+      case USER_LOGIN_SUCCESS:
+        return {
+          userInfo: action.payload,
+        };
+      case USER_LOGIN_FAIL:
+        return {
+          error: action.payload,
+        };
+  
+      case USER_LOGOUT_SUCCESS:
+        return {};
+      default:
+        return state;
     }
-}
+  };
+  
+  export { userReducer };

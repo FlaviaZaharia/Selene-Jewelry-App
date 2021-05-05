@@ -4,21 +4,40 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
+//nou
+import { useDispatch, useSelector } from 'react-redux';
+import { login} from '../actions/authActions';
 const LoginForm = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
 
-  useEffect(() => {
+//nou
+const dispatch = useDispatch();
+
+  //Grab pieces of data from our store that we care about
+
+  const state = useSelector(state => {
+    return state.userLogin;
+  });
+  const { loading, userInfo, error } = state;
+
+
+ /* useEffect(() => {
     if (localStorage.getItem("authToken")) {
       history.push("/front");
     }
-  }, [history]);
+  }, [history]);*/
+
+  useEffect(() => {
+    if (userInfo) history.push('/front');
+  }, [state]);
+
 
   const loginHandler = async (e) => {
     e.preventDefault();
 
-    const config = {
+    /*const config = {
       header: {
         "Content-Type": "application/json",
       },
@@ -38,7 +57,8 @@ const LoginForm = ({ history }) => {
       setTimeout(() => {
         setError("");
       }, 5000);
-    }
+    }*/
+    dispatch(login(email, password));
   };
 
   return (

@@ -1,77 +1,99 @@
 import axios from 'axios';
-import { returnErrors } from './errorActions';
 import {
-    USER_LOADED,
-    USER_LOADING,
-    AUTH_ERROR,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT_SUCCESS,
-    REGISTER_SUCCESS,
-    REGISTER_FAIL 
-} from "./types";
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAIL,
+  USER_LOGOUT_SUCCESS,
+} from '../redux/authConstants';
 
-//check token and load user
+const register = (name, email, password) => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: USER_REGISTER_REQUEST,
+      });
 
-export const loadUser = () => (dispatch,getState) => {
-    // user loading
-    dispatch({type: USER_LOADING});
-    axios
-        .get('/api/auth/user',tokenConfig(getState))
-        .then(res=> dispatch ({
-            type: USER_LOADED,
-            payload: res.data
-        }))
-        .catch(err => {
-            dispatch(returnErrors(err.response.data,err.response.status));
-            dispatch({
-                type: AUTH_ERROR
-            });
-        });
+      //MAKE ACTUALL CALL
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
 
+      const { data } = await axios.post(
+        '/api/auth/register',
+        {
+          name,
+          email,
+          password,
+        },
+        config
+      );
+
+      dispatch({
+        type: USER_REGISTER_SUCCESS,
+        payload: data,
+      });
+
+      //Save the user into localstorage
+      localStorage.setItem('userAuthData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload: error.response && error.response.data.message,
+      });
+    }
+  };
 };
 
-//register user
-export const register=({firstname,lastname,email,password})=>dispatch=>{
-    //headers
-    const config={
+//Login action
+
+const login = (email, password) => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: USER_LOGIN_REQUEST
+      });
+        
+      //Make the actual
+      const config = {
         headers: {
-            "Content-type": "application/json"
-        }
+          'Content-Type': 'application/json',
+        },
+      };
+
+      const { data } = await axios.post(
+        '/api/auth/login',
+        { email, password },
+        config
+      );
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: data,
+      });
+      //Save the user into localstorage
+      localStorage.setItem('userAuthData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: USER_LOGIN_FAIL,
+        payload: error.response && error.response.data.message,
+      });
     }
+  };
+};
 
-    //request body
-
-    const body =JSON.stringify({firstname,lastname,email,password});
-    axios.post('/api/users',body,config).then(res=>dispatch({
-    type:REGISTER_SUCCESS,
-    payload:res.data
-    }))
-    .catch(err=>{
-        dispatch(returnErrors(err.response.data,err.response.status,'REGISTER_FAIL'));
-        dispatch({
-            type:REGISTER_FAIL
-        });
+//Logout action
+const logout = () => async dispatch => {
+  try {
+    //Remove user from storage
+    localStorage.removeItem('userAuthData');
+    dispatch({
+      type: USER_LOGOUT_SUCCESS,
     });
-}
+  } catch (error) {}
+};
 
-
-//setup config/headers and token
-
-export const tokenConfig = getState => {
-    //get token from localstorage
-    const token=getState().auth.token;
-
-    //headers
-    const config = {
-        headers: {
-            "Content-type": "application/json"
-        }
-    }
-    //if token, add to headers
-    if(token) {
-        config.headers['x-auth-token'] = token;
-    }
-
-    return config;
-}
+export { register, login, logout };

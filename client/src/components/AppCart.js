@@ -56,10 +56,11 @@ const AppCart=()=>{
               <p>Subtotal ({getCartCount()}) items</p>
               <p>${getCartSubTotal()}</p>
             </div>
-            <div className="submitButton">
-              <button >Proceed To Checkout</button>
-            </div>
+            
           </div>
+          <div className="submitButton">
+             <Link to='/checkout'> <button>Proceed To Checkout</button></Link>
+            </div>
         </div>
       </>
     );

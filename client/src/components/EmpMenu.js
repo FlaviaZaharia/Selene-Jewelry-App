@@ -1,11 +1,25 @@
 import React from 'react';
 import { Card, CardText, CardBody, CardDeck, Button, CardTitle } from 'reactstrap';
 import { handleLogout } from './AppPrivateRoute';
-import { Link } from 'react-router-dom';
-export default class EmpMenu extends React.Component {
+import { Link ,useHistory} from 'react-router-dom';
+import {logout} from '../actions/authActions'
+import { useSelector, useDispatch } from 'react-redux';
+import {useEffect} from 'react'
 
-    render() {
+const  EmpMenu=({history})=>{
+    
+    const dispatch = useDispatch();
+    const state = useSelector(state => {
+        return state.userLogin;
+      });
+    const { userInfo, loading, error } = state;
 
+        const handleLogout=async(e)=>{
+            //e.preventDefault();
+            history.push("/login");
+            dispatch(logout());
+            
+        };
         return (
             <div className='menu'>
                 <br></br>
@@ -62,6 +76,7 @@ export default class EmpMenu extends React.Component {
             </div>
 
         );
-    }
+    
 }
+export default EmpMenu;
 
