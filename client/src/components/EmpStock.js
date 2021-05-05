@@ -2,6 +2,9 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {ITEM} from "./ITEM"
+import {useSelector,useDispatch} from 'react-redux'
+import { getProducts as listProducts } from "../actions/productActions";
 import {Card, CardText, CardBody, Button, CardLink,CardTitle} from 'reactstrap';
 const EmpStock=({history})=> {
     
@@ -21,11 +24,6 @@ const EmpStock=({history})=> {
 
     const updateHandler=async(e) =>{
         e.preventDefault();
-
-        /*this.setState ({
-            showMe:false
-        }); */
-       
         const config = {
           header: {
             "Content-Type": "application/json",
@@ -52,16 +50,12 @@ const EmpStock=({history})=> {
 return(
         <div className='EmpStock' >
             {filter.map(({_id,name,category,quantity})=>
-              <Card  key={_id} className="cards" >
-              <CardBody>
-                <CardTitle tag="h5" style={{textAlign:'center'}}>{name}</CardTitle>
-              </CardBody>
-             
-              <CardBody>
-                <CardText style={{textAlign:'center'}}>Article ID:{_id} <br/> Category:{category} <br/> Quantity:{quantity}</CardText>
-                {/*<CardLink className='Links' href="#">Add to Wish List</CardLink>
-                <CardLink  className='Links' href="#">Add to Cart</CardLink>*/}
-                 <div className='form-inputs'>
+            <Card  key={_id} className="cards" >
+            <CardBody>
+              <CardTitle tag="h5" style={{textAlign:'center'}}>{name}</CardTitle>
+              <CardText style={{textAlign:'center'}}>Article ID:{_id} <br/> Category:{category} <br/> Quantity:{quantity}</CardText>
+             <form onSubmit={updateHandler}>
+              <div className='form-inputs'>
                 <label> Required quantity: </label>
                 <input 
                     type="number" required
@@ -71,11 +65,13 @@ return(
                     onChange={(e)=>setQuantity(e.target.value)}
                      /></div>
                 <div className="submitButton">
-                  <Button className="mbut" onClick={updateHandler}> Refill </Button>
+                  <Button className="mbut" > Refill </Button>
                 </div>
+                </form>
               </CardBody>
             </Card>
-              )}
+            )}
+      
         </div> )   
 }
 

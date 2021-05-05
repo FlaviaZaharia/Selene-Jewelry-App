@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../actions/productActions";
 import { addToCart } from "../actions/cartActions";
+import { addToWish } from "../actions/wishActions";
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 const AppProductDetails=({match,history})=>{
 
     const [qty, setQty] = useState(1);
@@ -19,6 +23,10 @@ const AppProductDetails=({match,history})=>{
         dispatch(addToCart(product._id, qty));
         history.push(`/cart`);
       };
+      const addToWishHandler=()=> {
+        dispatch(addToWish(product._id));
+        history.push(`/wish`);
+      }
 
       return(
 <div className="productscreen">
@@ -61,9 +69,13 @@ const AppProductDetails=({match,history})=>{
                 </select>
               </p>
               <p>
-                <button type="button" onClick={addToCartHandler}>
-                  Add To Cart
-                </button>
+                <IconButton className="btn"> 
+                  <ShoppingBasketIcon></ShoppingBasketIcon>
+                </IconButton>
+                <br></br>
+                <IconButton className="btn">
+                 <FavoriteIcon></FavoriteIcon>
+                </IconButton>
               </p>
             </div>
           </div>

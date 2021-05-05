@@ -14,7 +14,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import AppPrivateRoute from './components/AppPrivateRoute';
 import EmpMenu from './components/EmpMenu';
 import ClientMenu from './components/ClientMenu';
-
+import AppWish from './components/AppWish';
 import AppAddForm from './components/AppAddForm'
 import AppDeleteForm from './components/AppDeleteForm';
 import AppFindForm from './components/AppFindForm';
@@ -40,6 +40,7 @@ class App extends Component {
       <Route path="/aboutus"  component={AppAddForm}/>
       <Route path="/login"    component={LoginForm}/>
       <Route path="/cart"     component={AppCart}/>
+      <Route path="/wish"     component={AppWish}/>
       <Route path="/register" component={RegisterForm}/>
       <Route exact path="/details/:id" component={AppProductDetails}/>
       </Switch>
