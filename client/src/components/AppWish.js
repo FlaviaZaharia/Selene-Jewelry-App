@@ -7,10 +7,13 @@ const AppWish=()=>{
     const dispatch = useDispatch();
 
     const wish = useSelector((state) => state.wish);
-    const {wishItems } = wish;
+    const { wishItems } = wish;
   
     useEffect(() => {}, []);
-  
+    
+    const addToWishHandler = (id) => {
+        dispatch(addToWish(id));
+    }
     const removeFromWishHandler = (id) => {
       dispatch(removeFromWish(id));
     };
