@@ -5,9 +5,12 @@ font-family: 'Great Vibes', cursive;
 text-align: center;
 padding: 15px;
 margin: 10px;
-
 }
 
+.about{
+  font-family: 'Cardo';
+  text-align: center;
+}
 .btn{
   color: #9a66a3;
 }

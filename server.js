@@ -32,8 +32,8 @@ mongoose.connect(db,{
 app.use('/api/auth',require('./routes/api/auth'));
 //nou
 app.use('/api/items',require('./routes/api/items'));
-app.use('/api/order',require('./routes/api/order'))
-
+app.use('/api/order',require('./routes/api/order'));
+app.use('/api/wishlist',require('./routes/api/wishlist'));
 app.use('/api/private',require('./routes/api/private'));
 //error handler(should be last piece of middleware)
 app.use(errorHandler);

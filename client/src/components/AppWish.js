@@ -11,9 +11,6 @@ const AppWish=()=>{
   
     useEffect(() => {}, []);
     
-    const addToWishHandler = (id) => {
-        dispatch(addToWish(id));
-    }
     const removeFromWishHandler = (id) => {
       dispatch(removeFromWish(id));
     };

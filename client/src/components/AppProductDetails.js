@@ -70,13 +70,16 @@ const AppProductDetails=({match,history})=>{
                 </select>
               </p>
               <p>
-                <IconButton className="btn"> 
+                {/*<IconButton className="btn"> 
                   <ShoppingBasketIcon></ShoppingBasketIcon>
-                </IconButton>
+                  </IconButton>*/}
+                  <button className="btn" onClick={addToCartHandler}>
+                    add to cart
+                  </button>
                 <br></br>
-                <IconButton className="btn">
-                 <FavoriteIcon></FavoriteIcon>
-                </IconButton>
+                <button className="btn" onClick={addToWishHandler}>
+                  add to wishlist
+                </button>
               </p>
             </div>
           </div>
