@@ -1,0 +1,2 @@
+export const ORDER_SENT="ORDER_SENT"
+export const ORDER_PENDING="ORDER_PENDING"

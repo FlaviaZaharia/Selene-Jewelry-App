@@ -20,7 +20,7 @@ const RegisterForm =({history})=>{
     });
     const { loading, userInfo, error } = state;
     useEffect(() => {
-      if (userInfo) history.push('/front');
+      if (userInfo) history.push('/welcome');
     }, [state]);
     const registerHandler = async (e) => {
       e.preventDefault();

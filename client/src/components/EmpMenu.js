@@ -67,6 +67,24 @@ const  EmpMenu=({history})=>{
                     </Card>
 
                 </CardDeck>
+                <CardDeck>
+                  <Card className="cards" style={{ width: '18rem' }}>
+                        <CardBody>
+                            <CardTitle tag="h5" style={{ textAlign: 'center' }}> Manage Orders</CardTitle>
+                            <Link to="/manage">
+                            <Button variant='primary' className="mbut"> Go </Button>
+                            </Link>
+                        </CardBody>
+                    </Card>
+                    <Card className="cards" style={{ width: '18rem' }}>
+                        <CardBody>
+                            <CardTitle tag="h5" style={{ textAlign: 'center' }}> previous orders</CardTitle>
+                            <Link to="/orders">
+                            <Button variant='primary' className="mbut"> Go </Button>
+                            </Link>
+                        </CardBody>
+                    </Card>
+                </CardDeck>
                 <div className="logout">
                     <button className="outM" onClick={handleLogout}>Logout</button>
                  </div>

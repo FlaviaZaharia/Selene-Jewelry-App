@@ -402,6 +402,17 @@ vertical-align: middle;
     }
   }
 
+  .text-center{
+    font-family: 'Cardo', serif;
+      font-size: xx-large;
+  }
+
+  .payment{
+    background-color: #e1bee7 !important;
+    color:black;
+    font-size: large;
+  }
+
 
   
   

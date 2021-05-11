@@ -34,12 +34,37 @@ const OrderSchema=new Schema({
         type:String,
         required:true
     },
+    cardNr:{
+        type:String,
+        required:false
+    },
     shipping:{
        type:String,
        required:true
     },
     products:{
-        type:Array,
+        type:[{
+            product:{ type: String },
+            name: { type: String },
+            category: { type: String },
+            material: { type: String },
+            price: { type: Number },
+            quantity: {type: Number},
+            image: { type: String },
+            qty: {type: Number}
+        }],
+        required:true
+    },
+    total:{
+        type:Number,
+        required:true
+    },
+    transport:{
+        type:Number,
+        required:true
+    },
+    status:{
+        type:String,
         required:true
     }
 });

@@ -21,7 +21,8 @@ import AppFindForm from './components/AppFindForm';
 import AppCart from './components/AppCart';
 import AppProductDetails from './components/AppProductDetails';
 import AppOrder from './components/AppOrder';
-
+import PreviousOrders from './components/PreviousOrders';
+import AppManageOrders from './components/AppManageOrders'
 
 class App extends Component {
 
@@ -35,10 +36,11 @@ class App extends Component {
       <AppNavbar />
       <Switch>
       <PrivateRoute exact path="/front" component={EmpMenu} />
+      <Route path="/welcome" component={ClientMenu}/>
       <Route path="/" exact component={AppContainer}/>
       <Route path="/jewelry"  component={AppJewelry}/>
       <Route path="/watches"  component={AppWatches}/>
-      <Route path="/aboutus"  component={AppAddForm}/>
+      <Route path="/aboutus"  component={AppAboutUs}/>
       <Route path="/login"    component={LoginForm}/>
       <Route path="/cart"     component={AppCart}/>
       <Route path="/register" component={RegisterForm}/>
@@ -47,6 +49,8 @@ class App extends Component {
       <Route path="/edit" component={AppFindForm}/>
       <Route path="/delete"  component={AppDeleteForm}/>
       <Route path="/checkout"  component={AppOrder}/>
+      <Route path="/orders"  component={PreviousOrders}/>
+      <Route path="/manage"  component={AppManageOrders}/>
       </Switch>
 
       

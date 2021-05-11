@@ -4,13 +4,14 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import {cartReducer} from '../reducers/cartReducers'
 import {getProductDetailsReducer,getProductsReducer} from '../reducers/productReducers'
 import { userReducer } from '../reducers/authReducer';
-
+import {orderReducer} from '../reducers/orderReducer';
 
 const reducer=combineReducers({
 cart:cartReducer,
 getProducts:getProductsReducer,
 getProductDetails:getProductDetailsReducer,
 userLogin:userReducer //nou
+
 })
 
 const middleware=[thunk];
@@ -24,11 +25,13 @@ const cartItemsInLocalStorage = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem('userAuthData'))
   : null;
 
+ 
+
 const INITIAL_STATE = {
   cart: {
-    cartItems: cartItemsInLocalStorage,
-  },
-  userLogin: { userInfo: userAuthFromStorage } //nou
+    cartItems: cartItemsInLocalStorage },
+  userLogin: { userInfo: userAuthFromStorage }
+ 
 };
 
 const store = createStore(
