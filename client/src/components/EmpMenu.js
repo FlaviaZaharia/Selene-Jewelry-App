@@ -78,7 +78,7 @@ const  EmpMenu=({history})=>{
                     </Card>
                     <Card className="cards" style={{ width: '18rem' }}>
                         <CardBody>
-                            <CardTitle tag="h5" style={{ textAlign: 'center' }}> previous orders</CardTitle>
+                            <CardTitle tag="h5" style={{ textAlign: 'center' }}> Previous orders</CardTitle>
                             <Link to="/orders">
                             <Button variant='primary' className="mbut"> Go </Button>
                             </Link>

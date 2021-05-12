@@ -7,30 +7,11 @@ const PreviousOrders=({history})=>{
         return state.userLogin;
       });
       const { loading, userInfo } = state;
-      const [items,setItems]=useState();
+      const [orders,setOrders]=useState([]);
       const [error,setError]=useState();
-      const userId=userInfo.user._id;
-      let id="6099c2038f6c503db41c74e5";
-     const getItems = async(e) => {
-      const config = {
-        header: {
-          "Content-Type": "application/json",
-        },
-      };
-  
-      try {
-        const { data } = await axios.get(
-          `/api/order/find`,
-          {userId},
-          config
-        );
-       console.log(data);
-      } catch (error) {
-        setError(error.response.data.error);
-        setTimeout(() => {
-          setError("");
-        }, 5000);
-      }
+      const uid=userInfo.user._id;
+     const getItems = ()=> {
+      axios.get('/api/order/get').then(rezultat => setOrders(rezultat.data));
       }
       useEffect(() => {
         getItems();
@@ -44,10 +25,10 @@ return(
           <th>Order ID</th>
           <th>Name</th>
           <th>Phone number</th>
-          <th>Address</th>
-          <th>City</th>
-          <th>Country</th>
+          <th>Address,City,Country</th>
           <th>Products</th>
+          <th>Payment</th>
+          <th>Shipping</th>
           <th>Subtotal</th>
           <th>Transport</th>
           <th>Total</th>
@@ -55,24 +36,21 @@ return(
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>{userInfo.user._id}</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {orders.filter((orders)=>orders.userId===uid).map((order)=>(<tr>
+          <td>{order._id}</td>
+          <td>{order.name}</td>
+          <td>{order.number}</td>
+          <td>{order.address},{order.city},{order.country}</td>
+          <td>{order.products.map((item)=>(<div><p><b>Item ID</b><br/>{item._id}</p><p><b>Item name</b><br/>{item.name}</p><p><b>Category</b><br/>{item.category}</p><p><b>Qantity</b><br/>{item.qty}<hr></hr></p></div>))}</td>
+               <td>{order.payment}</td>
+               <td>{order.shipping}</td>
+               <td>{order.total}</td>
+               <td>{order.transport}</td>
+               <td>{order.total+order.transport}</td>
+               <td>{order.status}</td>
+        </tr>))}
+        
+    
       </tbody>
     </Table>
 );
