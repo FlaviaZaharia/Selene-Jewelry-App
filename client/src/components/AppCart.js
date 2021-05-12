@@ -9,7 +9,7 @@ const AppCart=()=>{
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
   
-    useEffect(() => {}, []);
+    useEffect(() => { localStorage.removeItem("cart")}, []);
   
     const qtyChangeHandler = (id, qty) => {
       dispatch(addToCart(id, qty));
@@ -37,7 +37,7 @@ const AppCart=()=>{
   
             {cartItems.length === 0 ? (
               <div>
-                Your Cart Is Empty <Link to="/">Go Back</Link>
+                Your Cart Is Empty <Link to="/"><br/>Check our collections</Link>
               </div>
             ) : (
               cartItems.map((item) => (
@@ -50,7 +50,8 @@ const AppCart=()=>{
               ))
             )}
           </div>
-  
+          <br/>
+          <br/>
           <div className="cartscreen__right">
             <div className="cartscreen__info">
               <p>Subtotal ({getCartCount()}) items</p>
@@ -59,7 +60,8 @@ const AppCart=()=>{
             
           </div>
           <div className="submitButton">
-             <Link to='/checkout'> <button>Proceed To Checkout</button></Link>
+            {cartItems.length!==0?(<Link to='/checkout'><button>Proceed To Checkout</button></Link>):(<p></p>)}
+             
             </div>
         </div>
       </>

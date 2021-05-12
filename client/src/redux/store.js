@@ -5,7 +5,7 @@ import {cartReducer} from '../reducers/cartReducers'
 import {wishReducer} from '../reducers/wishReducer'
 import {getProductDetailsReducer,getProductsReducer} from '../reducers/productReducers'
 import { userReducer } from '../reducers/authReducer';
-
+import {orderReducer} from '../reducers/orderReducer';
 
 const reducer=combineReducers({
 cart:cartReducer,
@@ -13,6 +13,7 @@ wish:wishReducer,
 getProducts:getProductsReducer,
 getProductDetails:getProductDetailsReducer,
 userLogin:userReducer //nou
+
 })
 
 const middleware=[thunk];
@@ -31,6 +32,8 @@ const wishItemsInLocalStorage = localStorage.getItem("wish")
   const userAuthFromStorage = localStorage.getItem('userAuthData')
   ? JSON.parse(localStorage.getItem('userAuthData'))
   : null;
+
+ 
 
 const INITIAL_STATE = {
   cart: {

@@ -5,11 +5,12 @@ import {useSelector,useDispatch} from 'react-redux'
 import { getProducts as listProducts } from "../actions/productActions";
 import { addToCart } from "../actions/cartActions";
 import {Link} from 'react-router-dom'
-import {ITEM} from "./ITEM"
-const  AppJewerly=()=>{
+import {ITEM} from "./ITEM";
+import { Button, ButtonGroup } from 'reactstrap';
+const  AppJewerly=(props)=>{
   
   const dispatch = useDispatch();
-
+  const [types,setTypes]=useState(null);
   const getProducts = useSelector((state) => state.getProducts);
   const { products, loading, error } = getProducts;
 
@@ -32,26 +33,73 @@ const  AppJewerly=()=>{
     
         return(
             <div className='AppJewelry'>
+<div className='text-center' >
+  <ButtonGroup>
+        <Button color="light" onClick={() => setTypes("")} active={types === ""}>All products</Button>
+        <Button color="light" onClick={() => setTypes("Rings")} active={types === "Rings"}>Rings</Button>
+        <Button color="light" onClick={() => setTypes("Earrings")} active={types === "Earrings"}>Earrings</Button>
+        <Button color="light" onClick={() => setTypes("Necklaces")} active={types === "Necklaces"}>Necklaces</Button>
+        <Button color="light" onClick={() => setTypes("Bracelets")} active={types === "Bracelets"}>Bracelets</Button>
+      </ButtonGroup>
+      </div>
 
-<Nav className='jewel_navbar' >
-    <NavItem>
-      <NavLink className='jewel_nav' href="/allproducts" >All products</NavLink>
-    </NavItem>
-    <NavItem>
-      <NavLink className='jewel_nav' /*onClick={filterBraclets}*/ href="/bracelets" >Bracelets</NavLink>
-    </NavItem>
-    <NavItem>
-      <NavLink className='jewel_nav' href="/rings">Rings</NavLink>
-    </NavItem>
-    <NavItem>
-      <NavLink className='jewel_nav' href="/earrings">Earrings</NavLink>
-    </NavItem>
-    <NavItem>
-      <NavLink className='jewel_nav' href="/necklaces">Necklaces</NavLink>
-    </NavItem>
+
+      {types==="Rings"?(products.filter((product)=>product.category==="Rings").map((product)=><ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              quantity={product.quantity}
+              category={product.category}
+              _id={product._id}/>)):(types==="Earrings"?(products.filter((product)=>product.category==="Earrings").map((product)=><ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              quantity={product.quantity}
+              category={product.category}
+              _id={product._id}/>)):(types==="Necklaces"?(products.filter((product)=>product.category==="Necklaces").map((product)=><ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              quantity={product.quantity}
+              category={product.category}
+              _id={product._id}/>)):(types==="Bracelets"?(products.filter((product)=>product.category==="Bracelets").map((product)=><ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              quantity={product.quantity}
+              category={product.category}
+              _id={product._id}/>)):(types===""?(products.filter((product)=>product.category!=="Watches").map((product)=><ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              quantity={product.quantity}
+              category={product.category}
+              _id={product._id}/>)):(products.filter((product)=>product.category!=="Watches").map((product)=><ITEM
+              key={product._id}
+              name={product.name}
+              material={product.material}
+              price={product.price}
+              image={product.image}
+              quantity={product.quantity}
+              category={product.category}
+              _id={product._id}/>))))))}
+            </div>
+        );
     
-  </Nav>
-  {products.map((product)=>
+        
+}
+export default AppJewerly;
+/*products.map((product)=>
               <ITEM
               key={product._id}
               name={product.name}
@@ -61,13 +109,4 @@ const  AppJewerly=()=>{
               quantity={product.quantity}
               category={product.category}
               _id={product._id}/>
-              )}
-  
-
-            </div>
-        );
-    
-        
-}
-export default AppJewerly;
-
+              )}*/ 

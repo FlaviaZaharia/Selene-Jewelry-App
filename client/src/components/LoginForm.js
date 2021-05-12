@@ -30,7 +30,12 @@ const dispatch = useDispatch();
   }, [history]);*/
 
   useEffect(() => {
-    if (userInfo) history.push('/front');
+    if(userInfo)
+    if (userInfo.user.email==='admin@selene.com') history.push('/front');
+    else
+    history.push('/welcome')
+    
+    
   }, [state]);
 
 
