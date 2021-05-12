@@ -11,7 +11,15 @@ const WishSchema=new Schema({
         required:true
     },
     products:{
-        type:Array,
+        type:[{
+            product:{ type: String },
+            name: { type: String },
+            category: { type: String },
+            material: { type: String },
+            price: { type: Number },
+            quantity: {type: Number},
+            image: { type: String },
+        }],
         required:true
     }
 });

@@ -9,7 +9,7 @@ const AppWish=()=>{
     const wish = useSelector((state) => state.wish);
     const { wishItems } = wish;
   
-    useEffect(() => {}, []);
+    useEffect(() => {localStorage.removeItem("wish")}, []);
     
     const removeFromWishHandler = (id) => {
       dispatch(removeFromWish(id));
