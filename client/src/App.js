@@ -20,6 +20,8 @@ import AppDeleteForm from './components/AppDeleteForm';
 import AppFindForm from './components/AppFindForm';
 import AppCart from './components/AppCart';
 import AppProductDetails from './components/AppProductDetails';
+import EmpStock from './components/EmpStock';
+import AppStock from './components/AppStock';
 import AppOrder from './components/AppOrder';
 import PreviousOrders from './components/PreviousOrders';
 import AppManageOrders from './components/AppManageOrders'
@@ -49,6 +51,7 @@ class App extends Component {
       <Route path="/add"  component={AppAddForm}/>
       <Route path="/edit" component={AppFindForm}/>
       <Route path="/delete"  component={AppDeleteForm}/>
+      <Route path="/stock" component={AppStock}/>
       <Route path="/checkout"  component={AppOrder}/>
       <Route path="/orders"  component={PreviousOrders}/>
       <Route path="/manage"  component={AppManageOrders}/>

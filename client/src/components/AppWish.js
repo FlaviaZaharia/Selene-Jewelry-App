@@ -1,19 +1,28 @@
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToWish, removeFromWish } from "../actions/wishActions";
 import WISHLIST from './WISHLIST'
-const AppWish=()=>{
-    const dispatch = useDispatch();
+const AppWish=({key,item})=>{
+  //const dispatch = useDispatch();
 
-    const wish = useSelector((state) => state.wish);
-    const { wishItems } = wish;
-  
-    useEffect(() => {localStorage.removeItem("wish")}, []);
+    const state = useSelector(state => {
+      return state.userLogin;
+  });
+    const {userInfo} = state;
+
+    const [wishItems,setWishItems]=useState([]);
+
+    const getWishItems = () => {
+      axios.get('/api/wishlist/get').then(rezultat => {setWishItems(rezultat.data);console.log(rezultat.data)});
+      }
+
     
-    const removeFromWishHandler = (id) => {
-      dispatch(removeFromWish(id));
-    };
+
+
+    useEffect(() => {getWishItems()}, []);
+    
   
     const getWishCount = () => {
       return wishItems.reduce((qty, item) => Number(item.qty) + qty, 0);
@@ -31,11 +40,13 @@ const AppWish=()=>{
                 Your Wishlist Is Empty <Link to="/">Go Back</Link>
               </div>
             ) : (
-              wishItems.map((item) => (
+              wishItems.filter( (item)=> item.email===userInfo.user.email).map((item) => (
                 <WISHLIST
-                  key={item.product}
-                  item={item}
-                  removeHandler={removeFromWishHandler}
+                  key={item.products.map((wish)=>wish._id)}
+                  name={item.products.map((wish)=>wish.name)}
+                  price={item.products.map((wish)=>wish.price)}
+                  image={item.products.map((wish)=>wish.image)}
+                  id={item._id}
                 />
               ))
             )}

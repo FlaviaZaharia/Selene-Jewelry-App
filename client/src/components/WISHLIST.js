@@ -1,20 +1,28 @@
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
-const WISHLIST=({ item, removeHandler })=>{
+const WISHLIST=({ name,price,image,id,key})=>{
+
+    const removeHandler = async () => {
+    await axios.delete(
+      `/api/wishlist/delete/${id}`,
+      {id}
+     
+    ); }
 
     return(
       <div className="cartitem">
       <div className="cartitem__image">
-        <img width='100 px' src={item.image} alt={item.name} />
+        <img width='100 px' src={image} alt={name} />
       </div>
-      <Link to={`/details/${item.product}`} className="cartItem__name">
-        <p>{item.name}</p>
+      <Link to={`/details/${key}`} className="cartItem__name">
+        <p>{name}</p>
       </Link>
-      <p className="cartitem__price">${item.price}</p>
+      <p className="cartitem__price">${price}</p>
       <button
         className="cartItem__deleteBtn"
-        onClick={() => removeHandler(item.product)}
+        onClick={() => removeHandler()}
       >
         <IconButton><DeleteIcon style={{fontSize:'medium',color:"red"}}></DeleteIcon></IconButton>
       </button>

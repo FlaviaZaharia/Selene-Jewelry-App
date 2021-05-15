@@ -13,9 +13,13 @@ exports.update=async(req,res)=>{
    .catch(err=>err.status(404).json({success:false}));
   }
 
-exports.remove=async(req,res)=>{
-  Wishlist.deleteMany({}).then(()=>res.json({success:true}))
- .catch(err=>res.status(404).json({success:false})); }
+  exports.remove=async(req,res)=>{
+    /*const {id}=req.body;*/
+  Wishlist.findById(req.params.id)
+ .then(item=>item.remove().then(()=>res.json({success:true})))
+ .catch(err=>res.status(404).json({success:false}));
+}
+
 
 exports.display=async(req,res)=>{
   Wishlist.find()

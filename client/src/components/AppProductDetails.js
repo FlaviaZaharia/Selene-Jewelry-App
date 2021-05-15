@@ -6,6 +6,7 @@ import { addToWish } from "../actions/wishActions";
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import axios from "axios";
 const AppProductDetails=({match,history})=>{
 
     const [qty, setQty] = useState(1);
@@ -13,6 +14,12 @@ const AppProductDetails=({match,history})=>{
   
     const productDetails = useSelector((state) => state.getProductDetails);
     const { loading, error, product } = productDetails;
+
+    const state = useSelector(state => {
+      return state.userLogin;
+    });
+    const {userInfo} = state;
+
     useEffect(() => {
         if (product && match.params.id !== product._id) {
           dispatch(getProductDetails(match.params.id));
@@ -23,8 +30,16 @@ const AppProductDetails=({match,history})=>{
         dispatch(addToCart(product._id, qty));
         history.push(`/cart`);
       };
-      const addToWishHandler=()=> {
-        dispatch(addToWish(product._id));
+      const addToWishHandler= async ()=> {
+        //dispatch(addToWish(product._id));
+        const userId = userInfo.user._id;
+        const email = userInfo.user.email;
+        const products=[];
+           // Array.prototype.push(products, product);
+        products.push(product);
+          console.log(product);
+        await axios.post('/api/wishlist/send',{userId,email,products});
+
         history.push(`/wish`);
       }
 

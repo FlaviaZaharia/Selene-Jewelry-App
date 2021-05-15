@@ -16,14 +16,14 @@ const EmpStock=({history})=> {
     const getItems = () => {
         axios.get('/api/items/retrieve/').then(rezultat => setItems(rezultat.data));
       }
-    const filter = items.filter((item) => item.quantity<20);
+    const filter = items.filter((item) => item.quantity<=10);
       
     useEffect(() => {
         getItems();
       },[]);
 
-    const updateHandler=async(e) =>{
-        e.preventDefault();
+    const updateHandler=async _id =>{
+        
         const config = {
           header: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const EmpStock=({history})=> {
             {quantity},
             config
           );
-         
+          setQuantity(data.quantity);
           history.push("/");
         } catch (error) {
           setError(error.response.data.error);
@@ -54,7 +54,7 @@ return(
             <CardBody>
               <CardTitle tag="h5" style={{textAlign:'center'}}>{name}</CardTitle>
               <CardText style={{textAlign:'center'}}>Article ID:{_id} <br/> Category:{category} <br/> Quantity:{quantity}</CardText>
-             <form onSubmit={updateHandler}>
+             <form onSubmit={updateHandler(_id)}>
               <div className='form-inputs'>
                 <label> Required quantity: </label>
                 <input 
