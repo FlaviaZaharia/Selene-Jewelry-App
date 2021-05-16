@@ -67,7 +67,8 @@ const  EmpMenu=({history})=>{
                     </Card>
 
                 </CardDeck>
-                <CardDeck>
+                <br></br>
+                <CardDeck className="deck">
                   <Card className="cards" style={{ width: '18rem' }}>
                         <CardBody>
                             <CardTitle tag="h5" style={{ textAlign: 'center' }}> Manage Orders</CardTitle>
@@ -85,6 +86,7 @@ const  EmpMenu=({history})=>{
                         </CardBody>
                     </Card>
                 </CardDeck>
+                <br></br>
                 <div className="logout">
                     <button className="outM" onClick={handleLogout}>Logout</button>
                  </div>

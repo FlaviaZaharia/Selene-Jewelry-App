@@ -10,16 +10,23 @@ return(
     
     <div className="iconite">
         <Link to='/login'>
-        <IconButton className="btn">
-        <AccountCircleIcon>
-            </AccountCircleIcon></IconButton></Link>
             <IconButton className="btn">
-        <FavoriteIcon></FavoriteIcon>
-        </IconButton>
+                <AccountCircleIcon>
+                </AccountCircleIcon>
+            </IconButton>
+        </Link>
+
+        <Link to='/wish'>
+            <IconButton className="btn">
+                 <FavoriteIcon></FavoriteIcon>
+            </IconButton>
+        </Link>
+
         <Link to='/cart'>
-        <IconButton className="btn"> 
-            <ShoppingBasketIcon></ShoppingBasketIcon>
-            </IconButton></Link>
+            <IconButton className="btn"> 
+                <ShoppingBasketIcon></ShoppingBasketIcon>
+            </IconButton>
+        </Link>
     </div>
 );
 }

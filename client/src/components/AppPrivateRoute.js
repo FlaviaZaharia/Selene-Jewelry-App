@@ -8,6 +8,7 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import AppContainer from './AppContainer';
 import AppFindForm from './AppFindForm';
 import EmpMenu from './EmpMenu';
+import EmpStock from './EmpStock';
 
 
 //nou
@@ -62,6 +63,7 @@ export const AppPrivateRoute=({history})=>{
       <Route path="/add"  component={AppAddForm}/>
       <Route path="/edit" component={AppFindForm}/>
       <Route path="/delete"  component={AppDeleteForm}/>
+      <Route path="/stock" component={EmpStock}/>
       <Route path="/" component={EmpMenu} />
       </Switch>
       
@@ -76,4 +78,3 @@ export const AppPrivateRoute=({history})=>{
 
 export default AppPrivateRoute;
 
-//<Route path="/stock" component={EmpStock}/>
