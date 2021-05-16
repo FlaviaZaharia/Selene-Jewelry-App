@@ -7,6 +7,7 @@ const AppDeleteForm = ({ history }) => {
     const [id, setId] = useState("");
     const [error, setError] = useState("");
   
+  
     const deleteHandler = async (e) => {
       e.preventDefault();
   

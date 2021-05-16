@@ -10,9 +10,11 @@ const ManageOrders=()=>{
       const [orders,setOrders]=useState([]);
       const [status,setStatus]=useState();
       const [id,setId]=useState();
+     
       const getOrders = () => {
         axios.get('/api/order/get').then(rezultat => {setOrders(rezultat.data);console.log(rezultat.data)});
       }
+     
       useEffect(() => {
         getOrders();
       },[]);
