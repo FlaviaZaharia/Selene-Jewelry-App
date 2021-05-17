@@ -95,7 +95,7 @@ const AppFindForm = ({ history }) => {
 
            <div className="loginForm">
                 <br></br>
-                <p> Find product by Id</p> 
+                <p className="title"> Find product by Id</p> 
                 <form onSubmit={findHandler}>
                 
                 <div className='form-input'>
@@ -114,12 +114,12 @@ const AppFindForm = ({ history }) => {
                 />
                 </div>
                 <div className="submitButton">
-                <button  className='btnn' >Find product</button>
+                <button  className='btn' >Find product</button>
                 </div> 
                 </form>
                 
                 <br></br>
-                <p> Update product details</p> 
+                <p className="title"> Update product details</p> 
                 <form onSubmit={updateHandler}>
                     {error&&<span>{error}</span>}
                 
@@ -212,7 +212,7 @@ const AppFindForm = ({ history }) => {
                 </div>
                 <br/>
                 <div className="submitButton">
-                <button  className='btnn' >Update product</button>
+                <button  className='btn' >Update product</button>
                 </div> 
                 </form>
             </div>

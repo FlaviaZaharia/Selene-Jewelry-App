@@ -36,13 +36,13 @@ const AppDeleteForm = ({ history }) => {
 
 <div className="loginForm">
                 <br></br>
-                <p> Delete product</p> 
+                <p className="title"> Delete product</p> 
                 <form onSubmit={deleteHandler}>
                     {error&&<span>{error}</span>}
                 
                 <div className='form-input'>
                 <label htmlFor='id' className='form-label'>
-                    Id
+                    Id:
                 </label>
                 <input
                     type='text' required
@@ -57,7 +57,7 @@ const AppDeleteForm = ({ history }) => {
                 </div>
  
                 <div className="submitButton">
-                <button  className='btnn' >Delete</button>
+                <button  className='btn' >Delete</button>
                 </div> 
                 </form>
             </div>

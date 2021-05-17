@@ -69,8 +69,7 @@ const dispatch = useDispatch();
   return (
 
     <div className="loginForm">
-      <br></br>
-      <p> Login</p>
+      <p className="title"> Login</p>
       <form onSubmit={loginHandler}>
         {error && <span>{error}</span>}
 
@@ -104,8 +103,10 @@ const dispatch = useDispatch();
           />
         </div>
         <div className="submitButton">
-          <button className='btnn' >Login</button>
-          <span>New Member? Register <Link to="/register"> here</Link></span>
+          <button className='btn' >Login</button>
+          <br/>
+          <br/>
+          <span className="subsol">New Member? Register <Link to="/register"> here</Link></span>
         </div>
       </form>
     </div>

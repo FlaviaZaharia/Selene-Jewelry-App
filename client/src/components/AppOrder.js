@@ -216,7 +216,7 @@ const AppOrder=({history},props)=>{
           
           </div>
         <div className="submitButton">
-        <button  className='btnn' >Order</button>
+        <button  className='btn' >Order</button>
         </div> 
         </form> )}
         
