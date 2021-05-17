@@ -15,7 +15,7 @@ const register = (name, email, password) => {
       dispatch({
         type: USER_REGISTER_REQUEST,
       });
-
+      
       //MAKE ACTUALL CALL
       const config = {
         headers: {
@@ -43,7 +43,8 @@ const register = (name, email, password) => {
     } catch (error) {
       dispatch({
         type: USER_REGISTER_FAIL,
-        payload: error.response && error.response.data.message,
+        //payload: error.response && error.response.data.message,
+        payload:"The email address is already used"
       });
     }
   };
@@ -79,7 +80,8 @@ const login = (email, password) => {
     } catch (error) {
       dispatch({
         type: USER_LOGIN_FAIL,
-        payload: error.response && error.response.data.message,
+        //payload: error.response && error.response.data.message,
+        payload:"Invalid credentials"
       });
     }
   };

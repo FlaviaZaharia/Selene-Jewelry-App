@@ -4,9 +4,18 @@ const ErrorResponse=require('../utils/errorResponse')
 //add orders
 exports.add=async(req,res,next)=>{
   const {userId,email,name,number,address,city,country,payment,cardNr,shipping,products,total,transport,status}=req.body;
+  try{
+    if(!payment)
+    {
+      return next(new ErrorResponse("Please choose a payment method",401));
+    }
   const newOrder=await Order.create({userId,email,name,number,address,city,country,payment,cardNr,shipping,products,total,transport,status})
 newOrder.save().then(item=>res.send(item)).catch(err=>next(err));
+  }
+  catch(e){
+    res.status(401).json({success:false,error:error.message})
 
+  }
 }
 
 exports.update=async(req,res)=>{

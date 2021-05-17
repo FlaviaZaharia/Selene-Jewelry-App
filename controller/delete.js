@@ -1,14 +1,16 @@
+const { TokenExpiredError } = require('jsonwebtoken');
 const Item=require('../models/Item');
-
+const ErrorResponse=require('../utils/errorResponse')
 /*exports.remove=async(req,res)=>{
      Item.findById(req.params.id)
     .then(item=>item.remove().then(()=>res.json({success:true})))
     .catch(err=>res.status(404).json({success:false}));
   }*/
 
-  exports.remove=async(req,res)=>{
-      /*const {id}=req.body;*/
-    Item.findById(req.params.id)
+  exports.remove=async(req,res,next)=>{
+  
+    const item=Item.findById(req.params.id)
    .then(item=>item.remove().then(()=>res.json({success:true})))
-   .catch(err=>res.status(404).json({success:false}));
+   .catch(err=>res.status(500).json({success:false,error:error.message}));
+  
  }

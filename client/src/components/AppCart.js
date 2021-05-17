@@ -9,7 +9,7 @@ const AppCart=()=>{
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
   
-    useEffect(() => { localStorage.removeItem("cart")}, []);
+    useEffect(() => { }, []);
   
     const qtyChangeHandler = (id, qty) => {
       dispatch(addToCart(id, qty));

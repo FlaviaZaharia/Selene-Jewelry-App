@@ -3,6 +3,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import axios from 'axios';
 import LoginForm from './LoginForm'
 import { Button, ButtonGroup } from 'reactstrap';
+import {clearCart} from '../actions/cartActions'
 const AppOrder=({history},props)=>{
 
     const [address,setAddress]=useState("");
@@ -14,13 +15,10 @@ const AppOrder=({history},props)=>{
     const [error,setError]=useState("");
     const [shipping,setShipping]=useState("");
     const [cardNr,setCardNr]=useState("");
-    const [status,setStatus]=useState("Pending")
-    //const [transport,setTransport]=useState(0);
-    //const [total,setTotal]=useState(0);
-    const dispatch = useDispatch();
+    const [status,setStatus]=useState("Pending");
    
     
-    
+    const dispatch=useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
     const order=useSelector((state)=>state.order)
@@ -71,13 +69,17 @@ const AppOrder=({history},props)=>{
           updateItems();
           //localStorage.removeItem("cart");
          // window.location.reload();
+         dispatch(clearCart());
           history.push("/");
+         // cartItems=[];
        } catch (error) {
           setError(error.response.data.error);
           setTimeout(() => {
             setError("");
           }, 5000);
-        }}
+        }
+      
+      }
           
     
       
@@ -105,6 +107,7 @@ const AppOrder=({history},props)=>{
         <div className="loginForm">
           {!userInfo?(<LoginForm/>):(<form onSubmit={makeOrder}>
             <h2>Checkout</h2>
+            {error&&<span>{error}</span>}
             <div className='form-input'>
         <label htmlFor='name' className='form-label'>
            Name:

@@ -27,7 +27,8 @@ exports.login=async(req,res,next)=>{
 
    const isMatch=await user.matchPasswords(password);
    if(!isMatch){
-    return next(new ErrorResponse("Invalid credentials",401));
+    //return next(new ErrorResponse("Invalid credentials",401));
+    res.status(401).json({success:false,error:error.message});
    }
    sendToken(user,200,res);
 

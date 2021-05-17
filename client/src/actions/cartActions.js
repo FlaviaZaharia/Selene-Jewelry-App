@@ -27,3 +27,10 @@ export const removeFromCart=(id)=>(dispatch,getState)=>{
 
     localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));
 }
+
+export const clearCart=()=>(dispatch,getState)=>{
+    dispatch({
+        type:actionTypes.CLEAR_CART
+    })
+    localStorage.removeItem("cart");
+}

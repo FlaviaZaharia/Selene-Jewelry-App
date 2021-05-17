@@ -10,7 +10,7 @@ import { login} from '../actions/authActions';
 const LoginForm = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
 
 //nou
 const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const dispatch = useDispatch();
   const state = useSelector(state => {
     return state.userLogin;
   });
-  const { loading, userInfo, error } = state;
+  const { loading, userInfo,error} = state;
 
 
  /* useEffect(() => {
@@ -63,7 +63,9 @@ const dispatch = useDispatch();
         setError("");
       }, 5000);
     }*/
+    
     dispatch(login(email, password));
+
   };
 
   return (
@@ -71,9 +73,9 @@ const dispatch = useDispatch();
     <div className="loginForm">
       <br></br>
       <p> Login</p>
+     
       <form onSubmit={loginHandler}>
-        {error && <span>{error}</span>}
-
+         {error&& <span>{error}</span>}  
         <div className='form-input'>
           <label htmlFor='email' className='form-label'>
             Email:

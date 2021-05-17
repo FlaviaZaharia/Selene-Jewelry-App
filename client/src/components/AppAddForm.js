@@ -33,7 +33,6 @@ const AppAddForm = ({ history }) => {
   }
     const addHandler = async (e) => {
       e.preventDefault();
-      
       const config = {
         header: {
           "Content-Type": "application/json",
@@ -66,6 +65,7 @@ const AppAddForm = ({ history }) => {
                
                 <p> Add new product</p> 
                 <form onSubmit={addHandler}>
+                {error&&<span>{error}</span>}
                 <div className='form-input'>
                 <label htmlFor='name' className='form-label'>
                     Name
@@ -114,7 +114,7 @@ const AppAddForm = ({ history }) => {
                     Price: 
                 </label>
                 <input
-                    type="number" required
+                    type="number"  required
                     id='price'
                     className='input'
                     placeholder='Enter price'

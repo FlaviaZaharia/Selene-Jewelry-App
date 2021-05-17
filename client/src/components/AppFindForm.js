@@ -97,7 +97,7 @@ const AppFindForm = ({ history }) => {
                 <br></br>
                 <p> Find product by Id</p> 
                 <form onSubmit={findHandler}>
-                
+                {error&&<span>{error}</span>}
                 <div className='form-input'>
                 <label htmlFor='id' className='form-label'>
                     Id
@@ -121,7 +121,6 @@ const AppFindForm = ({ history }) => {
                 <br></br>
                 <p> Update product details</p> 
                 <form onSubmit={updateHandler}>
-                    {error&&<span>{error}</span>}
                 
                 <div className='form-input'>
                 <label htmlFor='name' className='form-label'>

@@ -3,6 +3,7 @@ import {Card, CardText, CardBody, CardDeck, Button, CardTitle} from 'reactstrap'
 import { useSelector, useDispatch } from 'react-redux';
 import {logout} from '../actions/authActions'
 import {Link} from 'react-router-dom'
+import {clearCart} from '../actions/cartActions'
 const ClientMenu=({history})=>{
     const dispatch = useDispatch();
     const state = useSelector(state => {
@@ -14,6 +15,7 @@ const ClientMenu=({history})=>{
             //e.preventDefault();
             history.push("/login");
             dispatch(logout());
+            dispatch(clearCart());
             
         };
    

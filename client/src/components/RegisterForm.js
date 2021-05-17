@@ -12,7 +12,7 @@ const RegisterForm =({history})=>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-
+    const [errors,setErrors]=useState("");
     //Grab pieces of data from our store that we care about
   
     const state = useSelector(state => {
@@ -24,7 +24,15 @@ const RegisterForm =({history})=>{
     }, [state]);
     const registerHandler = async (e) => {
       e.preventDefault();
+      if(password.length<6)
+      setErrors("Password minimum length is 6");
+      setTimeout(() => {
+        setErrors("");
+      }, 5000);
+    
       dispatch(register(name,email, password));
+      
+
     };
 
  return(
@@ -33,7 +41,7 @@ const RegisterForm =({history})=>{
                 <br></br>
                 <p> Registration </p> 
                 <form onSubmit={registerHandler}>
-                    {error&&<span>{error}</span>}
+                    {errors?(<span>{errors}</span>):(error?(<span>{error}</span>):(<></>))}
                 <div className='form-inputs'>
                 <label htmlFor='name' className='form-label'>
                     Name: 

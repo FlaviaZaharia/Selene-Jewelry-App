@@ -5,6 +5,7 @@ import { Link ,useHistory} from 'react-router-dom';
 import {logout} from '../actions/authActions'
 import { useSelector, useDispatch } from 'react-redux';
 import {useEffect} from 'react'
+import {clearCart} from '../actions/cartActions'
 
 const  EmpMenu=({history})=>{
     
@@ -18,6 +19,8 @@ const  EmpMenu=({history})=>{
             //e.preventDefault();
             history.push("/login");
             dispatch(logout());
+            dispatch(clearCart());
+
             
         };
         return (

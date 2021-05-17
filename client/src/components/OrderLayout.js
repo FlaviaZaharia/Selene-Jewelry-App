@@ -3,12 +3,11 @@ import { useState} from 'react';
 import axios from 'axios';
 export const OrderLayout=({id,email,name,number,address,city,country,payment,shipping,products,total,transport,statusOrd,index},props)=>{
     const [status,setStatus]=useState("Pending");
-    const [show,setShow]=useState(true);
     const [done,setDone]=useState(false);
     const handleSave=()=>{
         
         axios.put(`/api/order/update/${id}`,{status});
-        setShow(false);
+       
         setDone(true);
     }
     return(
@@ -28,12 +27,17 @@ export const OrderLayout=({id,email,name,number,address,city,country,payment,shi
     <td>{total+transport}</td>
     
     
-  {statusOrd==="Canceled"||statusOrd==="Shipped"?(<td>{statusOrd}</td>):(status==="Pending"?(<ButtonGroup >
+   {/* {statusOrd==="Canceled"||statusOrd==="Shipped"?(<td>{statusOrd}</td>):(status==="Pending"?(<ButtonGroup >
         <Button className="payment" onClick={() => setStatus("Shipped")} active={status === "Shipped"}>Shipped</Button>
         <Button className="payment" onClick={() => setStatus("Canceled")} active={status === "Canceled"}>Cancelled</Button>
       </ButtonGroup>):(<td>{status}</td>))}
-    {statusOrd==="Canceled"||statusOrd==="Shipped"?(<td>Finished</td>):(show===true?(<td><button onClick={handleSave}>Save</button></td>):(<td>Finished</td>))}  
-    
+    {statusOrd==="Canceled"||statusOrd==="Shipped"?(<td>Finished</td>):(show===true?(<td><button onClick={handleSave}>Save</button></td>):(<td>Finished</td>))}   */}
+     
+    {statusOrd==="Canceled"||statusOrd==="Shipped"?(<><td>{statusOrd}</td><td>Finished</td></>):(done===true?(<><td>{status}</td><td>Finished</td></>):(<><ButtonGroup >
+        <Button className="payment" onClick={() => setStatus("Shipped")} active={status === "Shipped"}>Shipped</Button>
+        <Button className="payment" onClick={() => setStatus("Canceled")} active={status === "Canceled"}>Cancelled</Button>
+      </ButtonGroup><td><button onClick={handleSave}>Save</button></td></>))}
+
     </tr>);
 
 }

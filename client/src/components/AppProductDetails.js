@@ -6,12 +6,15 @@ import { addToWish } from "../actions/wishActions";
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import { Button, Popover, PopoverHeader, PopoverBody,UncontrolledPopover } from 'reactstrap';
 import axios from "axios";
-const AppProductDetails=({match,history})=>{
+const AppProductDetails=({match,history},props)=>{
 
     const [qty, setQty] = useState(1);
+    const [exists,setExists]=useState(false);
+    const [wish,setWish]=useState([]);
     const dispatch = useDispatch();
-  
+    let yes={};
     const productDetails = useSelector((state) => state.getProductDetails);
     const { loading, error, product } = productDetails;
 
@@ -19,17 +22,27 @@ const AppProductDetails=({match,history})=>{
       return state.userLogin;
     });
     const {userInfo} = state;
+    const getwishItems=async()=>{
+      await axios.get("/api/wishlist/get").then(rezultat => setWish(rezultat.data));
+    }
+    const [popoverOpen, setPopoverOpen] = useState(false);
 
-    useEffect(() => {
+    const toggle = () => setPopoverOpen(!popoverOpen);
+
+  useEffect(() => {
         if (product && match.params.id !== product._id) {
           dispatch(getProductDetails(match.params.id));
         }
+        getwishItems();
+       
       }, [dispatch, match, product]);
-
       const addToCartHandler = () => {
         dispatch(addToCart(product._id, qty));
         history.push(`/cart`);
       };
+      
+    if(userInfo)
+    yes=wish.find((item)=>item.email===userInfo.user.email&&item.products[0]._id===product._id);
       const addToWishHandler= async ()=> {
         //dispatch(addToWish(product._id));
         const userId = userInfo.user._id;
@@ -37,7 +50,6 @@ const AppProductDetails=({match,history})=>{
         const products=[];
            // Array.prototype.push(products, product);
         products.push(product);
-          console.log(product);
         await axios.post('/api/wishlist/send',{userId,email,products});
 
         history.push(`/wish`);
@@ -85,16 +97,19 @@ const AppProductDetails=({match,history})=>{
                 </select>
               </p>
               <p>
-                {/*<IconButton className="btn"> 
-                  <ShoppingBasketIcon></ShoppingBasketIcon>
-                  </IconButton>*/}
+        
                   <button className="btn" onClick={addToCartHandler}>
-                    add to cart
+                    Add to cart
                   </button>
                 <br></br>
-                <button className="btn" onClick={addToWishHandler}>
-                  add to wishlist
-                </button>
+                {!userInfo?(<><button  id="PopoverFocus" className="btn" >
+                  Add to wishlist
+                </button><UncontrolledPopover  placement="bottom" trigger="focus" isOpen={popoverOpen} target="PopoverFocus" toggle={toggle}>
+        <PopoverBody>Please log in to add items to Wishlist</PopoverBody>
+      </UncontrolledPopover></>):(yes!==undefined?(<button className="btn" disabled>Already in Wishlist</button>):(<button className="btn" onClick={addToWishHandler}>
+                  Add to wishlist
+                </button>))}
+                
               </p>
             </div>
           </div>
