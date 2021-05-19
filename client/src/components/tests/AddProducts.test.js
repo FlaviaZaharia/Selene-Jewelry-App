@@ -1,7 +1,6 @@
 import AppAddForm from '../AppAddForm';
 import { fireEvent, render, screen,cleanup, waitFor } from "@testing-library/react";
-import * as ReactDOM from "react-dom"
-import { ExpansionPanelActions } from '@material-ui/core';
+
 
 test("renders the corect content",()=>{
    const {getByText,getByLabelText}=render (<AppAddForm/>)
@@ -37,11 +36,29 @@ test("Add Form",()=>{
 })
 
 
-test("Valid form",()=>{
-render(<AppAddForm/>);
+test("Valid input",()=>{
+const { getByTestId, getAllByTestId } = render(<AppAddForm />);
 fireEvent.input(screen.getByRole("textbox", { name: "Name" }), {target: { value: "Gloria" } });
 fireEvent.input(screen.getByRole("spinbutton", { name: "Price:" }), {target: { value: 234 } });
 fireEvent.input(screen.getByRole("spinbutton", { name: "Quantity:" }), {target: { value: 65 } });
-fireEvent.input(screen.getByRole("img", { name: "" }), {target: { value: img.png } });
+fireEvent.change(getByTestId('select'), { target: { value: "Rings" } })
+let options = getAllByTestId('select-option')
+expect(options[0].selected).toBeTruthy();
+expect(options[1].selected).toBeFalsy();
+expect(options[2].selected).toBeFalsy();
+expect(options[3].selected).toBeFalsy();
+expect(options[4].selected).toBeFalsy();
 
+fireEvent.change(getByTestId('select1'), { target: { value: "Silver" } })
+let options1 = getAllByTestId('select-option1')
+expect(options1[0].selected).toBeTruthy();
+expect(options1[1].selected).toBeFalsy();
+expect(options1[2].selected).toBeFalsy();
+
+fireEvent.change(screen.getByRole("img", { name: "" }), {
+   target: {
+     files: [new File(['img'], 'img.png', { type: 'image/png' })],
+   },
+ })
 })
+
