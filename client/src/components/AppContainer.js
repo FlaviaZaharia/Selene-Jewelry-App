@@ -7,28 +7,35 @@ render(){
         {
           src: 'https://media.tiffany.com/is/image/tiffanydm/HighJewelry_LP_Hero_April_Desktop?$tile$&wid=2992',
           altText: 'Slide 1',
-          caption: 'Slide 1',
-          header: 'Slide 1 Header',
+          caption: '',
+          header: 'Perfect Diamonds',
           key: '1'
         },
         {
           src: 'https://media4.s-nbcnews.com/i/newscms/2020_03/1528503/baublebar-today-main-200114-new_73a704c8c29626174fe184736d9edf2c.jpg',
           altText: 'Slide 2',
-          caption: 'Slide 2',
-          header: 'Slide 2 Header',
+          caption: '',
+          header: 'Must-have Styles',
           key: '2'
         },
         {
-          src: 'https://www.vividdiamonds.com/pub/media/wysiwyg/ves_mohawk/home/banner-2-no-text.jpg',
+          src: 'https://d2einedfuvjwol.cloudfront.net/homeslider/71b359/1-44.jpg',
           altText: 'Slide 3',
-          caption: 'Slide 3',
-          header: 'Slide 3 Header',
+          caption: '',
+          header: 'Sparkle Collection',
           key: '3'
+        },
+        {
+          src:'https://images-aka.kay.com/kay/homepage/5.10/k_20210510_hp_MIGM_dsktp.jpg',
+          altText:'Slide 4',
+          caption:'',
+          header:'',
+          key:'4'
         }
       ];
     return(
-        <div>
-        <UncontrolledCarousel  className="AppContainer" items={items}/> 
+        <div className="AppContainer">
+        <UncontrolledCarousel   items={items}/> 
           
         </div>
     );

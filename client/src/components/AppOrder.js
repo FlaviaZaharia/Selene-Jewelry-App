@@ -16,8 +16,7 @@ const AppOrder=({history},props)=>{
     const [shipping,setShipping]=useState("");
     const [cardNr,setCardNr]=useState("");
     const [status,setStatus]=useState("Pending");
-   
-    
+    let CartIT=[];
     const dispatch=useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
@@ -49,6 +48,7 @@ const AppOrder=({history},props)=>{
   
 
         try {
+          //updateItems();
             //const total=cartItems.reduce((price, item) => price + item.price * item.qty, 0).toFixed(2);
              const userId=userInfo.user._id;
              const email=userInfo.user.email;
@@ -62,16 +62,9 @@ const AppOrder=({history},props)=>{
             config
           );
          
-          console.log(data);
-          //cartItems.map((item)=>{
-           // axios.put(`/api/order/update/${data._id}`,{userId,item},config);
-         // })
-          updateItems();
-          //localStorage.removeItem("cart");
-         // window.location.reload();
+          updateItems(products);
          dispatch(clearCart());
           history.push("/");
-         // cartItems=[];
        } catch (error) {
           setError(error.response.data.error);
           setTimeout(() => {
@@ -83,8 +76,8 @@ const AppOrder=({history},props)=>{
           
     
       
-      const updateItems=()=>{
-        cartItems.map((item)=>{
+      const updateItems=(products)=>{
+           products.map((item)=>{
           const id=item.product;
           const name=item.name;
           const category=item.category;
@@ -93,7 +86,8 @@ const AppOrder=({history},props)=>{
           const quantity=item.quantity-Number(item.qty);
           const image=item.image;
           axios.put(
-            `/api/items/find/${id}`,{name,category,material,price,quantity,image});
+            `/api/items/find/${id}`,
+            {name,category,material,price,quantity,image})
         })
       }
 
@@ -219,7 +213,7 @@ const AppOrder=({history},props)=>{
           
           </div>
         <div className="submitButton">
-        <button  className='btnn' >Order</button>
+        <button  className='btn' >Order</button>
         </div> 
         </form> )}
         

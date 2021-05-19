@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 const AppFindForm = ({ history }) => {
     const [id, setId] = useState("");
     const [error, setError] = useState("");
+    const [error1, setError1] = useState("");
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const [material, setMaterial] = useState("");
@@ -13,6 +14,16 @@ const AppFindForm = ({ history }) => {
     const [quantity, setQuantity] = useState("");
     const [image,setImage]=useState("");
     const [loading,setLoading]=useState(false);
+    const [items,setItems]=useState([]);
+
+    useEffect(() => {
+      getItems();
+    }, []);
+  
+
+    const getItems=async()=>{
+     await axios.get('api/items/retrieve').then(rezultat => setItems(rezultat.data));
+    }
     const uploadImage=async e=>{
       const files=e.target.files;
       const data=new FormData();
@@ -65,8 +76,6 @@ const AppFindForm = ({ history }) => {
 
     const updateHandler=async(e)=>{
         e.preventDefault();
-
-
         const config = {
           header: {
             "Content-Type": "application/json",
@@ -95,14 +104,13 @@ const AppFindForm = ({ history }) => {
 
            <div className="loginForm">
                 <br></br>
-                <p> Find product by Id</p> 
+                <p className="title"> Find product by Id</p> 
                 <form onSubmit={findHandler}>
-                {error&&<span>{error}</span>}
                 <div className='form-input'>
                 <label htmlFor='id' className='form-label'>
-                    Id
+                    Find product:
                 </label>
-                <input
+                {/* <input
                     type='text' required
                     id='id'
                     className='input'
@@ -111,15 +119,21 @@ const AppFindForm = ({ history }) => {
                     onChange={(e)=>setId(e.target.value)}
 
                    
-                />
+                /> */}
+                <select onChange={(e)=>setId(e.target.value)} defaultValue={""} className='input' required>
+                  <option selected></option>
+                  {items.map((item,index)=>
+                  <option key={index} value={item._id}>Name:{item.name} Category:{item.category}</option>
+                  )}
+                </select> 
                 </div>
                 <div className="submitButton">
-                <button  className='btnn' >Find product</button>
+                <button  className='btn' >Find product</button>
                 </div> 
                 </form>
                 
                 <br></br>
-                <p> Update product details</p> 
+                <p className="title"> Update product details</p> 
                 <form onSubmit={updateHandler}>
                 
                 <div className='form-input'>
@@ -210,8 +224,9 @@ const AppFindForm = ({ history }) => {
                 <img src={image} width='300px' height='300px'/>
                 </div>
                 <br/>
+                {error&&<span style={{fontSize:"x-large",color:"black"}}>{error}</span>}
                 <div className="submitButton">
-                <button  className='btnn' >Update product</button>
+                <button  className='btn' >Update product</button>
                 </div> 
                 </form>
             </div>

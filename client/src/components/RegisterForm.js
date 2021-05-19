@@ -39,7 +39,7 @@ const RegisterForm =({history})=>{
 
 <div className="registerForm">
                 <br></br>
-                <p> Registration </p> 
+                <p className="titleForm">  Registration </p> 
                 <form onSubmit={registerHandler}>
                     {errors?(<span>{errors}</span>):(error?(<span>{error}</span>):(<></>))}
                 <div className='form-inputs'>
@@ -88,9 +88,12 @@ const RegisterForm =({history})=>{
                     onChange={(e)=>setPassword(e.target.value)}
                 />
                 </div>
+                <br/>
                 <div className="submitButton">
-                <button  className='btnn' >Register</button>
-                <span>Already have an account?<Link to="/login">Login</Link></span>
+                <button  className='btn' >Register</button>
+                <br/>
+                <br/>
+                <span className="subsol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Already have an account?<Link to="/login">Login</Link></span>
                 </div>
                 </form>
             </div>

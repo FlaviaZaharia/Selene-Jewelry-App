@@ -46,7 +46,7 @@ const AppAddForm = ({ history }) => {
           config
         );
   
-        history.push("/");
+        history.push("/front");
       } catch (error) {
         setError(error.response.data.error);
         setTimeout(() => {
@@ -63,7 +63,7 @@ const AppAddForm = ({ history }) => {
 
 <div className="loginForm">
                
-                <p> Add new product</p> 
+                <p className="titleForm"> Add new product</p> 
                 <form onSubmit={addHandler}>
                 {error&&<span>{error}</span>}
                 <div className='form-input'>
@@ -97,7 +97,7 @@ const AppAddForm = ({ history }) => {
                 </div>
 
                 <div className='form-inputs'>
-                <label htmlFor='category' className='form-label'>
+                <label  htmlFor='material' className='form-label'>
                     Material: 
                 </label>
                 <br/>
@@ -151,7 +151,7 @@ const AppAddForm = ({ history }) => {
                 <br/>
                 {loading?(<h2>Loading...</h2>):(<img  width='300 px' height='300 px' border-radius="40px" src={image}/>)}
                 <div className="submitButton">
-                <button  className='btnn' >Save new product</button>
+                <button  className='btn' >Save new product</button>
                 </div> 
                 </form> 
                 <br/>   

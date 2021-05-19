@@ -35,7 +35,7 @@ const AppWish=({key,item})=>{
               wishItems.filter( (item)=> item.email===userInfo.user.email).map((item) => (
                 <WISHLIST
                 key={item._id}
-                  // _id={item.products.map((wish)=>wish._id)}
+                  _id={item.products.map((wish)=>wish._id)}
                   name={item.products.map((wish)=>wish.name)}
                   price={item.products.map((wish)=>wish.price)}
                   image={item.products.map((wish)=>wish.image)}

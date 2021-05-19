@@ -7,7 +7,7 @@ export const ITEM=({image,price,name,_id,material,category,quantity})=>{
     </CardBody>
     <CardImg  width='300px' height='300px' src={image} alt="Card image cap" />
     <CardBody>
-      <CardText style={{textAlign:'center'}}>{quantity<=0?(<p>{name}</p>):(<Link to={`details/${_id}`}>{name}</Link>)}</CardText>
+      <CardText style={{textAlign:'center'}}><Link to={`details/${_id}`}>{name}</Link></CardText>
       <CardText style={{textAlign:'center'}}>{quantity>0?(<span style={{color:"#006400"}}><b>In Stock</b></span>):(<span style={{color:"red"}}><b>Out of Stock</b></span>)}<br/>Price:{price} $ </CardText>
 
     </CardBody>

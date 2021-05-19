@@ -33,12 +33,14 @@ export const OrderLayout=({id,email,name,number,address,city,country,payment,shi
       </ButtonGroup>):(<td>{status}</td>))}
     {statusOrd==="Canceled"||statusOrd==="Shipped"?(<td>Finished</td>):(show===true?(<td><button onClick={handleSave}>Save</button></td>):(<td>Finished</td>))}   */}
      
-    {statusOrd==="Canceled"||statusOrd==="Shipped"?(<><td>{statusOrd}</td><td>Finished</td></>):(done===true?(<><td>{status}</td><td>Finished</td></>):(<><ButtonGroup >
+    {statusOrd==="Canceled"||statusOrd==="Shipped"?(<><td>{statusOrd}</td><td>Finished</td></>):(done===true&&status!=="Pending"?(<><td>{status}</td><td>Finished</td></>):(<><ButtonGroup >
         <Button className="payment" onClick={() => setStatus("Shipped")} active={status === "Shipped"}>Shipped</Button>
         <Button className="payment" onClick={() => setStatus("Canceled")} active={status === "Canceled"}>Cancelled</Button>
       </ButtonGroup><td><button onClick={handleSave}>Save</button></td></>))}
 
-    </tr>);
 
+
+
+    </tr>);
 }
 

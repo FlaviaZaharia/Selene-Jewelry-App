@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../actions/productActions";
 import { addToCart } from "../actions/cartActions";
-import { addToWish } from "../actions/wishActions";
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Button, Popover, PopoverHeader, PopoverBody,UncontrolledPopover } from 'reactstrap';
 import axios from "axios";
 const AppProductDetails=({match,history},props)=>{
@@ -42,13 +38,11 @@ const AppProductDetails=({match,history},props)=>{
       };
       
     if(userInfo)
-    yes=wish.find((item)=>item.email===userInfo.user.email&&item.products[0]._id===product._id);
+    yes=wish.find((item)=>item.email===userInfo.user.email&&item.products[0]._id===match.params.id);
       const addToWishHandler= async ()=> {
-        //dispatch(addToWish(product._id));
         const userId = userInfo.user._id;
         const email = userInfo.user.email;
         const products=[];
-           // Array.prototype.push(products, product);
         products.push(product);
         await axios.post('/api/wishlist/send',{userId,email,products});
 
@@ -98,9 +92,9 @@ const AppProductDetails=({match,history},props)=>{
               </p>
               <p>
         
-                  <button className="btn" onClick={addToCartHandler}>
+                  {product.quantity===0?(<button className="btn" disabled>Add to cart</button>):(<button className="btn" onClick={addToCartHandler}>
                     Add to cart
-                  </button>
+                  </button>)}
                 <br></br>
                 {!userInfo?(<><button  id="PopoverFocus" className="btn" >
                   Add to wishlist

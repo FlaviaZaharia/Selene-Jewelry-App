@@ -6,14 +6,19 @@ text-align: center;
 padding: 15px;
 margin: 10px;
 }
-
+.AppContainer{
+  font-family:'Great Vibes', cursive; 
+  color  :rgb(30, 7, 53)!important; 
+}
 .about{
   font-family: 'Cardo';
   text-align: center;
+  
 }
-.btn{
-  color: #9a66a3;
-}
+ 
+.btn{ color:#f4f4f4;
+  align-self: center;
+  background-color: #5f465d; }
 .iconite {
     position: absolute;
     top: 20%;
@@ -28,7 +33,7 @@ margin: 10px;
     background-color: #e1bee7;
     text-align: center;
     padding-left:50px;
-  padding-right:50px;
+    padding-right:50px;
 }
 .navbar {
     
@@ -51,12 +56,44 @@ margin: 10px;
     width: 300px;
     height: 200px;
     z-index: 15;
-    top: 50%;
+    top: 40%;
     left: 46%;
     margin: -100px 0 0 -150px;
     text-align: center;
-    font-family: 'Great Vibes', cursive,bold;
+    align-content: center;
+    font-family: 'Cardo', serif;
+    font-size:medium;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /*registerForm */
+  .title{
+    text-align: center;
     font-size: x-large;
+    font-weight: bold;
+  }
+  .subsol{
+    font-size: large;
+    text-align: center;
+    
+    
+  }
+  .registerForm {
+    background-color: #e1bee7;
+    position: absolute;
+    vertical-align: middle;
+    font-size:medium;
+    width: 300px;
+    height: 600px;
+    z-index: 15;
+    top: 40%;
+    left: 46%;
+    margin: -100px 0 0 -150px;
+    font-family: 'Cardo', serif;
    box-sizing: border-box;
    width: 100%;
    max-width: 400px;
@@ -99,29 +136,6 @@ margin: 10px;
    cursor: pointer;
   }
 
-  /*registerForm */
-
-  .registerForm {
-    background-color: #e1bee7;
-    position: absolute;
-    width: 300px;
-    height: 700px;
-    z-index: 15;
-    top: 40%;
-    left: 46%;
-    margin: -100px 0 0 -150px;
-    /*text-align: center; */
-    font-family: 'Great Vibes', cursive,bold;
-    font-size: x-large;
-   box-sizing: border-box;
-   width: 100%;
-   max-width: 400px;
-   padding-left: 20px;
-   padding-right: 20px;
-  
-vertical-align: middle;
-
-  }
   .form-inputs {
     margin-top: 10px;
     width: 100%;
