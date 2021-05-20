@@ -5,7 +5,6 @@ import {cartReducer} from '../reducers/cartReducers'
 import {wishReducer} from '../reducers/wishReducer'
 import {getProductDetailsReducer,getProductsReducer} from '../reducers/productReducers'
 import { userReducer } from '../reducers/authReducer';
-import {orderReducer} from '../reducers/orderReducer';
 
 const reducer=combineReducers({
 cart:cartReducer,

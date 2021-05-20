@@ -104,7 +104,7 @@ const AppFindForm = ({ history }) => {
 
            <div className="loginForm">
                 <br></br>
-                <p className="title"> Find product by Id</p> 
+                <p className="title"> Find product</p> 
                 <form onSubmit={findHandler}>
                 <div className='form-input'>
                 <label htmlFor='id' className='form-label'>

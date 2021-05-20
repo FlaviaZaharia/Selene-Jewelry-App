@@ -24,7 +24,7 @@ export const ITEMST=({image,name,id,category,q})=>{
             type="number" required
             id='quantity'
             className='inputStock'
-            placeholder='enter q'
+            placeholder='Enter quantity'
             //value={q}
             onChange={(e)=>setQuantity(e.target.value)}
              /></div>
