@@ -1,0 +1,7 @@
+{
+    "mongoURI":"mongodb+srv://admin:admin@selene.fac4d.mongodb.net/Selene?retryWrites=true&w=majority",
+    "jwtSecret":"sj_myjwtS",
+    "CLOUDINARY_CLOUD_NAME":"djfe4eels",
+    "CLOUDINARY_API_KEY":"474481185749534",
+    "CLOUDINARY_API_SECRET":"4DjwboCVOvxKkMf0-ci_YvgtI-I"
+}

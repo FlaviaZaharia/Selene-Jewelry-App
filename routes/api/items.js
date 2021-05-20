@@ -1,5 +1,6 @@
-const express=require('express');
+/*const express=require('express');
 const router=express.Router();
+const auth=require('../../middleware/auth');
 
 const Item=require('../../models/Item');
 
@@ -29,5 +30,23 @@ router.delete('/:id',(req,res)=>{
     .catch(err=>res.status(404).json({success:false}));
 
   });
+
+module.exports=router;*/
+
+
+const express=require('express');
+const router=express.Router();
+
+
+const {add}=require('../../controller/add');
+const {remove}=require('../../controller/delete');
+const {find}=require('../../controller/find');
+const {update}=require('../../controller/update');
+const {retrieve}=require('../../controller/retrieve');
+router.route("/add").post(add);
+router.route("/delete/:id").delete(remove);
+router.route("/find/:id").get(find);
+router.route("/find/:id").put(update);
+router.route("/retrieve").get(retrieve);
 
 module.exports=router;

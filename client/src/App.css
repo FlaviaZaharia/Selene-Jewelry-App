@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital@1&display=swap');
+h1,h2{
+font-family: 'Great Vibes', cursive;
+text-align: center;
+padding: 15px;
+margin: 10px;
+}
+.AppContainer{
+  font-family:'Great Vibes', cursive; 
+  color  :rgb(30, 7, 53)!important; 
+}
+.about{
+  font-family: 'Cardo';
+  text-align: center;
+  
+}
+ 
+.btn{ color:#f4f4f4;
+  align-self: center;
+  background-color: #5f465d; }
+.iconite {
+    position: absolute;
+    top: 20%;
+    right:3%;
+    margin: -100px 0 0 -150px;
+}
+
+.navigation{
+    font-family: 'Great Vibes', cursive;
+    font-size: x-large;
+    color: black;
+    background-color: #e1bee7;
+    text-align: center;
+    padding-left:50px;
+    padding-right:50px;
+}
+.navbar {
+    
+    display: inline-block;
+    list-style-type: none;
+}
+/*.container {
+    font-size: 28px;
+    color: #fff;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+     background-color: #ffffff; } */
+   
+
+  /*login*/
+  .loginForm {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 40%;
+    left: 46%;
+    margin: -100px 0 0 -150px;
+    text-align: center;
+    align-content: center;
+    font-family: 'Cardo', serif;
+    font-size:medium;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /*registerForm */
+  .title{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .subsol{
+    font-size: large;
+    text-align: center;
+    
+    
+  }
+  .registerForm {
+    background-color: #e1bee7;
+    position: absolute;
+    vertical-align: middle;
+    font-size:medium;
+    width: 300px;
+    height: 600px;
+    z-index: 15;
+    top: 40%;
+    left: 46%;
+    margin: -100px 0 0 -150px;
+    font-family: 'Cardo', serif;
+   box-sizing: border-box;
+   width: 100%;
+   max-width: 400px;
+   padding-left: 20px;
+   padding-right: 20px;
+  }
+
+  .inputField {
+   padding-top: 16px;
+  }
+  
+  .input {
+   box-sizing: border-box;
+   outline: none;
+   border: solid 2px #9a66a3;
+   border-radius: 4px;
+   color: #292929;
+   width: 100%;
+   padding: 12px;
+   font-size: 20px;
+   background: rgba(255, 255, 255, 1);
+  }
+  .inputStock{
+    width:99%;
+  }
+  .submitButton {
+   padding-top: 16px;
+  } 
+  
+  .btnn {
+   width: 100%;
+   min-width: 280px;
+   color: #565656;
+   padding: 12px;
+   font-size: 23px;
+   font-weight: bold;
+   border: solid 2px #9a66a3;
+   border-radius: 4px;
+   background: #e1bee7;
+   cursor: pointer;
+  }
+
+  .form-inputs {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .form-inputs p {
+    font-size: 20px;
+    margin-top: 0rem;
+    color: #5f465d;
+  }
+  
+  .form-label {
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #9a66a3;
+  }
+  
+  .form-input {
+    display: block;
+    /* padding-left: 10px; */
+    outline: none;
+    border-radius: 2px;
+   /* height: 40px; */
+    width: 100%;
+    border: none;
+  }
+  
+  .form-input::placeholder {
+    color: #595959;
+    font-size: 12px;
+  }
+
+  .p {
+    text-align: center;
+  }
+
+
+
+  .cards{
+      font-family: 'Cardo', serif;
+      font-size: x-large;
+      margin-top:10px;
+      margin-left:70px;
+      width:20%;
+      height:50%;
+      display:inline-block;
+      border-style: groove;
+      border-color: #9a66a3;
+      
+  }
+
+  .deck{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height:100%;
+  }
+ .cardss {
+   margin-left: 40%;
+   font-family: 'Cardo', serif;
+   font-size: x-large;
+ 
+  
+   border-style: groove;
+   border-color: #9a66a3;
+ }
+  .outM{
+    background-color:#c48ece;
+  color:#000000;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin-left: 45%;
+  cursor: pointer;
+  font-family: 'Cardo', serif, bold;
+  font-size:medium;
+  }
+  .mbut {
+    margin-left: 42%;
+    background-color: #9a66a3;
+    color:black;
+  }
+
+  .Links{
+      margin-left:5px;
+      color:#9a66a3;
+  }
+
+  .Links:hover{
+      color: blueviolet;
+  }
+  
+  .AppJewelry{
+      margin:20px;
+      padding:15px;
+      
+  }
+  .jewel_nav:link{
+   
+    font-family: 'Cardo', serif;
+    color:#9a66a3;
+    font-size: x-large;
+    text-decoration: none;
+  }
+  .jewel-nav:hover{
+      text-decoration: none;
+  }
+
+  .jewel_navbar{
+   justify-content: center;
+  }
+
+  .productscreen {
+    max-width: 1300px;
+    margin: 1rem auto;
+    display: flex;
+  }
+  
+  .productscreen__left {
+    display: flex;
+    flex: 0.8;
+  }
+  
+  .left__image {
+    margin: 1rem;
+    flex: 0.6;
+  }
+  
+  .left__info {
+    margin: 1rem;
+    flex: 0.4;
+    background: #fff;
+    height: fit-content;
+    font-size: 0.9rem;
+  }
+  
+  .left__name {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  
+  .left__info > p,
+  .right__info > p {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  .left__info > p:last-child,
+  .right__info > p:last-child {
+    border: none;
+  }
+  
+  .productscreen__right {
+    flex: 0.2;
+    
+  }
+  
+  .right__info {
+    width: 250px;
+    margin: 1rem;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .right__info p {
+    padding: 1rem;
+    font-size: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .right__info p > button {
+    grid-column: 1/-1;
+    width: 100%;
+    padding: 10px 16px;
+    background: #171717;
+    color: #f4f4f4;
+    border: 1px solid #171717;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .right__info select {
+    padding: 10px 16px;
+  }
+  
+  @media (max-width: 960px) {
+    .productscreen {
+      flex-direction: column;
+    }
+  
+    .productscreen__left {
+      flex-direction: column;
+      flex: 1;
+    }
+  
+    .left__image {
+      flex: 1;
+    }
+  
+    .left__info {
+      flex: 1;
+    }
+  
+    .productscreen__right {
+      flex: 1;
+      padding: 1rem;
+    }
+  
+    .right__info {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .cartitem {
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+    gap: 8px;
+    background: #fff;
+    border-radius: 2px;
+    place-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .cartItem__name {
+    text-decoration: none;
+    color: #171717;
+  }
+  
+  .cartItem__name:hover {
+    color: #dd219e;
+  }
+  
+  .cartItem__select {
+    padding: 10px 17px;
+  }
+  
+  .cartItem__deleteBtn {
+    padding: 10px 17px;
+    color: red;
+    background: #f4f4f4;
+    border: 1px solid #171717;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  }
+  
+  .cartItem__deleteBtn:hover,
+  .carItem__deleteBtn:active,
+  .carItem__deleteBtn:focus {
+    background: #171717;
+    transform: scale(1.2);
+  }
+  
+  @media (max-width: 700px) {
+    .cartItem__name {
+      font-size: 0.8rem;
+    }
+  
+    .cartItem__select,
+    .cartItem__deleteBtn {
+      padding: 8px 13px;
+    }
+  
+    .cartitem__price {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .cartItem__name {
+      font-size: 0.6rem;
+    }
+  
+    .cartItem__select,
+    .cartItem__deleteBtn {
+      padding: 5px 8px;
+    }
+  
+    .cartitem__price {
+      font-size: 0.6rem;
+    }
+  }
+
+  .text-center{
+    font-family: 'Cardo', serif;
+      font-size: xx-large;
+  }
+
+  .payment{
+    background-color: #e1bee7 !important;
+    color:black;
+    font-size: large;
+  }
+
+
+  
+  
